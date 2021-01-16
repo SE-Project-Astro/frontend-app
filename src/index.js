@@ -27,6 +27,7 @@ import Index from "views/Index.js";
 import LandingPage from "views/examples/LandingPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import ObjectList from "./views/AstroObjects/ObjectList";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -39,6 +40,10 @@ ReactDOM.render(
       <Route
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
+      />
+      <Route
+          path="/astro"
+          render={(props) => <ObjectList {...props} />}
       />
       <Route
         path="/profile-page"
