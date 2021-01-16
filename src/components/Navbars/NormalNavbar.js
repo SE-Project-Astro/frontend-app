@@ -150,7 +150,7 @@ export default function IndexNavbar() {
               <Button
                 className="nav-link d-none d-lg-block"
                 color="default"
-                onClick={scrollToDownload}
+                href="/profile-page"
               >
                 <i className="tim-icons icon-single-02" /> Profile
               </Button>
