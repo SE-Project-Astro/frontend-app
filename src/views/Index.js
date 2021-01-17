@@ -35,6 +35,10 @@ import Signup from "views/IndexSections/Signup.js";
 import Examples from "views/IndexSections/Examples.js";
 import Download from "views/IndexSections/Download.js";
 
+import AddNews from "views/admin/AddNews";
+import AddNewAstroObj from "views/admin/AddNewAstroObj";
+import LunarCalendar from "views/admin/LunarCalendar";
+
 export default function Index() {
   React.useEffect(() => {
     document.body.classList.toggle("index-page");
@@ -42,27 +46,34 @@ export default function Index() {
     return function cleanup() {
       document.body.classList.toggle("index-page");
     };
-  },[]);
+  }, []);
   return (
-    <>
-      <IndexNavbar />
-      <div className="wrapper">
-        <PageHeader />
-        <div className="main">
-          <Basics />
-          <Navbars />
-          <Tabs />
-          <Pagination />
-          <Notifications />
-          <Typography />
-          <JavaScript />
-          <NucleoIcons />
-          <Signup />
-          <Examples />
-          <Download />
-        </div>
-        <Footer />
+    <div className="wrapper">
+      <div className="main">
+        {/* <AddNews></AddNews> */}
+        <AddNewAstroObj></AddNewAstroObj>
+        {/* <LunarCalendar></LunarCalendar> */}
       </div>
-    </>
+    </div>
+    // <A>
+    //   <IndexNavbar />
+    //   <div className="wrapper">
+    //     <PageHeader />
+    //     <div className="main">
+    //       <Basics />
+    //       <Navbars />
+    //       <Tabs />
+    //       <Pagination />
+    //       <Notifications />
+    //       <Typography />
+    //       <JavaScript />
+    //       <NucleoIcons />
+    //       <Signup />
+    //       <Examples />
+    //       <Download />
+    //     </div>
+    //     <Footer />
+    //   </div>
+    // </AddNews>
   );
 }
