@@ -23,16 +23,16 @@ import "assets/css/nucleo-icons.css";
 import "assets/scss/blk-design-system-react.scss?v=1.2.0";
 import "assets/demo/demo.css";
 
-import Index from "views/Index.js";
+import TemplateIndex from "views/TemplateIndex.js";
 import LandingPage from "views/examples/LandingPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import ObjectList from "./views/AstroObjects/ObjectList";
+import App from "views/App";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/components" render={(props) => <Index {...props} />} />
+      <Route path="/components" render={(props) => <TemplateIndex {...props} />} />
       <Route
         path="/landing-page"
         render={(props) => <LandingPage {...props} />}
@@ -42,15 +42,12 @@ ReactDOM.render(
         render={(props) => <RegisterPage {...props} />}
       />
       <Route
-          path="/astro"
-          render={(props) => <ObjectList {...props} />}
-      />
-      <Route
         path="/profile-page"
         render={(props) => <ProfilePage {...props} />}
       />
-      <Redirect from="/" to="/components" />
+      <Redirect from="/" to="/astro" />
     </Switch>
+    <App />
   </BrowserRouter>,
   document.getElementById("root")
 );
