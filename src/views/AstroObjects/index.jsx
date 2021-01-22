@@ -1,27 +1,38 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import CardWithImage from "../../components/CardWithImage";
 import {Row, Container, Col} from 'reactstrap';
 import {useHistory} from "react-router";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { selectAllAstroObjects, fetchAstroObjects } from "redux/slices/astroObjectSlice";
 
 const Index = () => {
-    const astroObjects = useSelector(state => state.astroObjects)
+    const dispatch = useDispatch();
+    const astroObjects = useSelector(selectAllAstroObjects)
+
+    const astroObjectStatus = useSelector(state => state.astroObjects.status);
+
+    // useEffect(() => {
+    //     if(astroObjectStatus === 'idle') {
+    //         dispatch(fetchAstroObjects())
+    //     }
+    // }, [astroObjectStatus, dispatch])
+
     const history = useHistory();
-    const handleOnClick = useCallback((id) => history.push(`/astro/${id}`), [history])
+    const handleOnClick = useCallback((tag) => history.push(`/astro/${tag}`), [history])
     return (
         <React.Fragment>
             <section className="section section-lg">
                 <section className="section">
                     <Container>
+                        <button onClick={() => dispatch(fetchAstroObjects())}>Get Data</button>
                         <Row>
                             {astroObjects.map(astroObject => (
-                                <Col key={astroObject.id} xs="12" md="6" xl="4" onClick={() => handleOnClick(astroObject.id)}>
+                                <Col key={astroObject.tag} xs="12" md="6" xl="4" onClick={() => handleOnClick(astroObject.tag)}>
                                     <CardWithImage
                                         image={astroObject.image}
-                                        cardTitle={astroObject.cardTitle}
-                                        cardText="This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-                                        lastUpdatedText="Last updated 3 mins ago"
+                                        cardTitle={astroObject.desc}
                                     />
                                 </Col>
                             ))}

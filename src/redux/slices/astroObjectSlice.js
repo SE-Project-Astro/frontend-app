@@ -1,23 +1,54 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import sun_card from "assets/img/sun_card.jpg";
-import mars_card from "assets/img/mars_card.jpg";
-import earth_card from "assets/img/earth_card.jpg";
-import venus_card from "assets/img/venus_card.jpg";
-import mercury_card from "assets/img/mercury_card.jpg";
+import axios from "axios";
 
-const initialState = [
-    {id: "1", image: sun_card, cardTitle: "The Sun", cardText: "", lastUpdatedText: ""},
-    {id: "2", image: mercury_card, cardTitle: "The Mercury", cardText: "", lastUpdatedText: ""},
-    {id: "3", image: venus_card, cardTitle: "The Venus", cardText: "", lastUpdatedText: ""},
-    {id: "4", image: earth_card, cardTitle: "The Earth", cardText: "", lastUpdatedText: ""},
-    {id: "5", image: mars_card, cardTitle: "The Mars", cardText: "", lastUpdatedText: ""},
-];
+
+const initialState = {
+    astroObjects: [],
+    status: 'idle',
+    error: null
+}
 
 const astroObjectSlice = createSlice({
-   name: 'astroObject',
-   initialState,
-   reducers: {}
+    name: 'astroObjects',
+    initialState,
+    reducers: {
+        astroObjectAdded: {
+            reducer(state, action) {
+                state.astroObjects.push(action.payload)
+            },
+            prepare(tag, image, desc) {
+                return {
+                    payload: {tag, image, desc}
+                }
+            }
+        },
+        astroObjectUpdated(state, action) {
+            const {tag, image, desc} = action.payload;
+            const existingObject = state.astroObjects.find(astroObject => astroObject.tag === tag);
+            if (existingObject) {
+                existingObject.desc = desc;
+            }
+        }
+    }
 });
 
+const fetchAstroObjects = createAsyncThunk('astroObjects/fetchAstroObjects', async () => {
+    try {
+        const response = await axios.get('https://reqres.in/api/users?page=2');
+        return response.data;
+    }
+    catch (e) {
+        return e.response;
+    }
+})
+
+export const { astroObjectAdded, astroObjectUpdated } = astroObjectSlice.actions;
+
 export default astroObjectSlice.reducer;
+
+export {fetchAstroObjects}
+
+export const selectAllAstroObjects = state => state.astroObjects.astroObjects;
+
+export const selectAstroObjectByID = (state, astroObjectID) => state.astroObjects.astroObjects.find(astroObject => astroObject.id === astroObjectID);

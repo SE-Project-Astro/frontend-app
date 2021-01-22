@@ -5,6 +5,7 @@ import {Fade} from 'reactstrap';
 import AstroObjects from "./AstroObjects";
 import AstroObject from "./AstroObjects/AstroObject";
 import NewsPage from "./NewsPage";
+import LoginPage from "views/LoginForm"
 import RingLoader from "react-spinners/RingLoader";
 import Index from "views/Index"
 
@@ -46,6 +47,10 @@ const App = () => {
                             <Route
                                 path="/news"
                                 render={(props) => <NewsPage {...props} />}
+                            />
+                            <Route
+                                path="/login"
+                                render={(props) => <LoginPage {...props} />}
                             />
                             <Route
                                 path="/"

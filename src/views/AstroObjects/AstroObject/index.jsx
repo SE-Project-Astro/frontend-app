@@ -3,10 +3,12 @@ import { Row, Col, Container} from "reactstrap";
 import CardWithImage from "components/CardWithImage";
 import {useSelector} from "react-redux";
 
-const AstroObject = ({match}) => {
-    const {astroObjectId} = match.params
+import { selectAstroObjectByID } from "redux/slices/astroObjectSlice";
 
-    const astroObject = useSelector(state => state.astroObjects.find(astroObject => astroObject.id === astroObjectId))
+const AstroObject = ({match}) => {
+    const {astroObjectTag} = match.params
+
+    const astroObject = useSelector(state => selectAstroObjectByID(state, astroObjectTag));
 
     return (
         <React.Fragment>
@@ -19,7 +21,7 @@ const AstroObject = ({match}) => {
                                     image={astroObject.image}
                                     headingType="h2"
                                     height="520px"
-                                    cardTitle={astroObjectId.cardTitle}
+                                    cardTitle={astroObject.desc}
                                     isInList={false}
                                 />
                             </Col>
