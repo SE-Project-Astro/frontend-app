@@ -1,0 +1,27 @@
+.customCard {
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+}
+
+.cardImgOverlay {
+  background-color: rgba(0,0,0,0.4) !important;
+  border-radius: 16px;
+  &:hover {
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+  }
+}
+
+.cardImg {
+  background-color: rgba(255,255,255, 0.3);
+  border-radius: 16px;
+}
+
+.cardTitle {
+  font-family: 'Nunito', 'sans-serif';
+  font-weight: bold;
+}

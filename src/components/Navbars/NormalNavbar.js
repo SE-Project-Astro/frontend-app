@@ -117,17 +117,13 @@ export default function NormalNavbar() {
                 Getting started
               </DropdownToggle>
               <DropdownMenu className="dropdown-with-icons">
-                <DropdownItem href="https://demos.creative-tim.com/blk-design-system-react/#/documentation/overview">
-                  <i className="tim-icons icon-paper" />
-                  Documentation
-                </DropdownItem>
-                <DropdownItem tag={Link} to="/register-page">
+                <DropdownItem tag={Link} to="/astro">
                   <i className="tim-icons icon-bullet-list-67" />
-                  Register Page
+                  Astronomical Objects
                 </DropdownItem>
-                <DropdownItem tag={Link} to="/landing-page">
+                <DropdownItem tag={Link} to="/news">
                   <i className="tim-icons icon-image-02" />
-                  Landing Page
+                  News Page
                 </DropdownItem>
                 
               </DropdownMenu>

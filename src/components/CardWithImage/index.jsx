@@ -6,15 +6,19 @@ const useStyles = createUseStyles({
     customCard: {
         borderRadius: "16px",
         transition: 'all 0.2s ease',
+        height: props => props.height,
+        backgroundImage: props => `url(${props.image})`,
+        backgroundSize: "cover",
         '&:hover': {
-            transform: 'scale(1.05)',
+            transform: props => props.isInList ? 'scale(1.05)' : 'scale(1)',
             transition: 'all 0.2s ease',
         }
     },
     cardImgOverlay: {
+        backgroundColor: props => props.isInList ? [["rgba(0,0,0,0.6)", "!important"]] : [],
         borderRadius: "16px",
         '&:hover': {
-            backdropFilter: 'blur(5px)',
+            backdropFilter: props => props.isInList ? 'blur(5px)' : 'blur(0)',
             transition: 'all 0.2s ease',
         }
     },
@@ -31,19 +35,24 @@ const useStyles = createUseStyles({
 const CardWithImage = (props) => {
     const classes = useStyles(props);
     return (
-        <Col xs="12" md="6" xl="4" >
-            <Card inverse className={classes.customCard}>
-                <CardImg className={classes.cardImg} width="100%" src={props.image} alt="Card image cap" />
-                <CardImgOverlay className={classes.cardImgOverlay}>
-                    <CardTitle tag="h4" className={classes.cardTitle}>{props.cardTitle}</CardTitle>
-                    <CardText style={{fontFamily: "Nunito, sans-serif"}}>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                    <CardText>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </CardText>
-                </CardImgOverlay>
-            </Card>
-        </Col>
+        <Card inverse className={classes.customCard}>
+            <CardImgOverlay className={classes.cardImgOverlay}>
+                <CardTitle tag={props.headingType} className={classes.cardTitle}>{props.cardTitle}</CardTitle>
+                <CardText style={{fontFamily: "Nunito, sans-serif"}}>{props.cardText}</CardText>
+                <CardText>
+                    <small className="text-muted">{props.lastUpdatedText}</small>
+                </CardText>
+            </CardImgOverlay>
+        </Card>
     );
 }
 
 export default CardWithImage;
+
+CardWithImage.defaultProps = {
+    headingType: "h4",
+    height: "260px",
+    cardText: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    lastUpdatedText: "Last updated 3 mins ago",
+    isInList: true
+}

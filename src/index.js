@@ -18,6 +18,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import store from 'redux/store';
+import {Provider} from 'react-redux';
 
 import "assets/css/nucleo-icons.css";
 import "assets/scss/blk-design-system-react.scss?v=1.2.0";
@@ -45,9 +47,10 @@ ReactDOM.render(
         path="/profile-page"
         render={(props) => <ProfilePage {...props} />}
       />
-      <Redirect from="/" to="/astro" />
     </Switch>
-    <App />
+      <Provider store={store}>
+          <App />
+      </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );
