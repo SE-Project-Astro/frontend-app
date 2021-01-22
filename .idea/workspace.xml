@@ -2,10 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="727fda60-7253-4c76-a55a-e412af7370e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Layout/Layout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/News/blueorigin_news_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/News/nasa_news_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/News/nasa_news_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/News/spacex_news_1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/earth_card.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/mars_card.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/mercury_card.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/sun_card.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/venus_card.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CardWithImage/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CardWithImage/style.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navbars/RegNavbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hoc/Aux.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/slices/astroObjectSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/NewsPage/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/TemplateIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TemplateIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../react-frontend-app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -32,6 +62,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -50,6 +81,15 @@
       <updated>1610594068039</updated>
       <workItem from="1610594070184" duration="3644000" />
       <workItem from="1610580418063" duration="654000" />
+      <workItem from="1610616732983" duration="2541000" />
+      <workItem from="1610766882498" duration="52375000" />
+      <workItem from="1610892936946" duration="1722000" />
+      <workItem from="1610930851960" duration="644000" />
+      <workItem from="1611215839354" duration="17000" />
+      <workItem from="1611226903819" duration="647000" />
+      <workItem from="1611234947585" duration="2473000" />
+      <workItem from="1611240902357" duration="3178000" />
+      <workItem from="1611274497483" duration="6440000" />
     </task>
     <servers />
   </component>

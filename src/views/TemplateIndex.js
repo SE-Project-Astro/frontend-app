@@ -35,11 +35,7 @@ import Signup from "views/IndexSections/Signup.js";
 import Examples from "views/IndexSections/Examples.js";
 import Download from "views/IndexSections/Download.js";
 
-import AddNews from "views/admin/AddNews";
-import AddNewAstroObj from "views/admin/AddNewAstroObj";
-import LunarCalendar from "views/admin/LunarCalendar";
-
-export default function Index() {
+export default function TemplateIndex() {
   React.useEffect(() => {
     document.body.classList.toggle("index-page");
     // Specify how to clean up after this effect:
