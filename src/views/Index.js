@@ -35,7 +35,15 @@ import Signup from "views/IndexSections/Signup.js";
 import Examples from "views/IndexSections/Examples.js";
 import Download from "views/IndexSections/Download.js";
 
+<<<<<<< HEAD:src/views/TemplateIndex.js
 export default function TemplateIndex() {
+=======
+import AddNews from "views/admin/AddNews";
+import AddNewAstroObj from "views/admin/AddNewAstroObj";
+import LunarCalendar from "views/admin/LunarCalendar";
+
+export default function Index() {
+>>>>>>> 4a093158109f8691018098a3a21a355a774ae254:src/views/Index.js
   React.useEffect(() => {
     document.body.classList.toggle("index-page");
     // Specify how to clean up after this effect:
@@ -47,29 +55,9 @@ export default function TemplateIndex() {
     <div className="wrapper">
       <div className="main">
         {/* <AddNews></AddNews> */}
-        <AddNewAstroObj></AddNewAstroObj>
+        <AddNewAstroObj />
         {/* <LunarCalendar></LunarCalendar> */}
       </div>
     </div>
-    // <A>
-    //   <IndexNavbar />
-    //   <div className="wrapper">
-    //     <PageHeader />
-    //     <div className="main">
-    //       <Basics />
-    //       <Navbars />
-    //       <Tabs />
-    //       <Pagination />
-    //       <Notifications />
-    //       <Typography />
-    //       <JavaScript />
-    //       <NucleoIcons />
-    //       <Signup />
-    //       <Examples />
-    //       <Download />
-    //     </div>
-    //     <Footer />
-    //   </div>
-    // </AddNews>
   );
 }

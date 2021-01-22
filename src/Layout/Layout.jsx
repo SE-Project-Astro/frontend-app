@@ -1,11 +1,10 @@
 import React from "react";
-import Aux from "../hoc/Aux";
 import NormalNavbar from "../components/Navbars/NormalNavbar";
 import Footer from "../components/Footer/Footer";
 
 const Layout = (props) => {
     return (
-        <Aux >
+        <React.Fragment >
             <NormalNavbar />
             <main>
                 <div className="wrapper">
@@ -20,7 +19,7 @@ const Layout = (props) => {
                 </div>
             </main>
             <Footer />
-        </Aux>
+        </React.Fragment>
     );
 }
 

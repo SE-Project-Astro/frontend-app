@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import Aux from "../../hoc/Aux";
 import CardWithImage from "../../components/CardWithImage";
 import {Row, Container, Col} from 'reactstrap';
 import {useHistory} from "react-router";
@@ -11,7 +10,7 @@ const Index = () => {
     const history = useHistory();
     const handleOnClick = useCallback((id) => history.push(`/astro/${id}`), [history])
     return (
-        <Aux>
+        <React.Fragment>
             <section className="section section-lg">
                 <section className="section">
                     <Container>
@@ -30,7 +29,7 @@ const Index = () => {
                     </Container>
                 </section>
             </section>
-        </Aux>
+        </React.Fragment>
     );
 }
 

@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="727fda60-7253-4c76-a55a-e412af7370e4" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layout/Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Aux.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" afterDir="false" />
+>>>>>>> 4a093158109f8691018098a3a21a355a774ae254
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../react-frontend-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dushan/frontend-app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -37,6 +49,16 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TemplateIndex.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/views/TemplateIndex.js" working-dir="$PROJECT_DIR$/src/views">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.TemplateIndex.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,7 +78,7 @@
       <workItem from="1611226903819" duration="647000" />
       <workItem from="1611234947585" duration="2473000" />
       <workItem from="1611240902357" duration="3178000" />
-      <workItem from="1611274497483" duration="6440000" />
+      <workItem from="1611274497483" duration="11795000" />
     </task>
     <servers />
   </component>
