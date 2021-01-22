@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="727fda60-7253-4c76-a55a-e412af7370e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/slices/astroObjectSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react/custom/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardWithImage/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardWithImage/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/NewsPage/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewsPage/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +23,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../react-frontend-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GuideAstro" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -72,7 +58,7 @@
       <workItem from="1611226903819" duration="647000" />
       <workItem from="1611234947585" duration="2473000" />
       <workItem from="1611240902357" duration="3178000" />
-      <workItem from="1611274497483" duration="6440000" />
+      <workItem from="1611274497483" duration="7971000" />
     </task>
     <servers />
   </component>
