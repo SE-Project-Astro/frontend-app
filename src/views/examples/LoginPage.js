@@ -1,6 +1,4 @@
 import React from "react";
-import RegNavbar from "components/Navbars/RegNavbar.js";
-import Footer from "components/Footer/Footer.js";
 import classnames from "classnames";
 import{
     Button,
@@ -90,7 +88,6 @@ export default function LoginPage(){
 
     return(
         <>
-        <RegNavbar />
         <div className="wrapper">
             <div className="page-header">
                 <div className="page-header-image" />
@@ -163,7 +160,6 @@ export default function LoginPage(){
                 </div>
             </div>
         </div>
-        <Footer />
         </>
     );
 

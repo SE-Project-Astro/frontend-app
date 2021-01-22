@@ -4,12 +4,8 @@
     <list default="true" id="727fda60-7253-4c76-a55a-e412af7370e4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/astroObjectSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/astroObjectSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/examples/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +70,7 @@
       <workItem from="1611234947585" duration="2473000" />
       <workItem from="1611240902357" duration="3178000" />
       <workItem from="1611274497483" duration="11795000" />
-      <workItem from="1611293313800" duration="34250000" />
+      <workItem from="1611293313800" duration="38394000" />
     </task>
     <servers />
   </component>

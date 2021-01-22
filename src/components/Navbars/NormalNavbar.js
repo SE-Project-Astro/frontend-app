@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 // reactstrap components
 import {
   Button,
@@ -22,6 +23,7 @@ import {
 
 export default function NormalNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+  let isLogin = useSelector(state => state.users.isAdminLogin)
   const [collapseOut, setCollapseOut] = React.useState("");
   const [color, setColor] = React.useState("navbar-transparent");
   React.useEffect(() => {
@@ -53,11 +55,11 @@ export default function NormalNavbar() {
   const onCollapseExited = () => {
     setCollapseOut("");
   };
-  const scrollToDownload = () => {
-    document
-      .getElementById("download-section")
-      .scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToDownload = () => {
+  //   document
+  //     .getElementById("download-section")
+  //     .scrollIntoView({ behavior: "smooth" });
+  // };
   return (
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
       <Container>
@@ -144,7 +146,7 @@ export default function NormalNavbar() {
                 color="default"
                 href="/profile-page"
               >
-                <i className="tim-icons icon-single-02" /> Profile
+                <i className="tim-icons icon-single-02" /> {isLogin ? "Profile" : "Login"}
               </Button>
             </NavItem>
           </Nav>
