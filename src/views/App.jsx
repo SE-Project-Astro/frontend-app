@@ -6,7 +6,7 @@ import AstroObjects from "./AstroObjects";
 import AstroObject from "./AstroObjects/AstroObject";
 import NewsPage from "./NewsPage";
 import RingLoader from "react-spinners/RingLoader";
-import Aux from 'hoc/Aux';
+import Index from "views/Index"
 
 const App = () => {
 
@@ -20,7 +20,7 @@ const App = () => {
     }, [])
 
     return (
-        <Aux>
+        <React.Fragment>
             {loading ?
                 <div className="sweet-loading" style={{
                     width: "100vw",
@@ -47,11 +47,15 @@ const App = () => {
                                 path="/news"
                                 render={(props) => <NewsPage {...props} />}
                             />
+                            <Route
+                                path="/"
+                                render={(props) => <Index {...props} />}
+                            />
                         </Switch>
                     </Fade>
                 </Layout>
             }
-        </Aux>
+        </React.Fragment>
     );
 }
 

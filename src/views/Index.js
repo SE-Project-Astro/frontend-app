@@ -51,29 +51,9 @@ export default function Index() {
     <div className="wrapper">
       <div className="main">
         {/* <AddNews></AddNews> */}
-        <AddNewAstroObj></AddNewAstroObj>
+        <AddNewAstroObj />
         {/* <LunarCalendar></LunarCalendar> */}
       </div>
     </div>
-    // <A>
-    //   <IndexNavbar />
-    //   <div className="wrapper">
-    //     <PageHeader />
-    //     <div className="main">
-    //       <Basics />
-    //       <Navbars />
-    //       <Tabs />
-    //       <Pagination />
-    //       <Notifications />
-    //       <Typography />
-    //       <JavaScript />
-    //       <NucleoIcons />
-    //       <Signup />
-    //       <Examples />
-    //       <Download />
-    //     </div>
-    //     <Footer />
-    //   </div>
-    // </AddNews>
   );
 }

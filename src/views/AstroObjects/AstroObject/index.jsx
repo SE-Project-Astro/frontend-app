@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col, Container} from "reactstrap";
-import Aux from 'hoc/Aux';
 import CardWithImage from "components/CardWithImage";
 import {useSelector} from "react-redux";
 
@@ -10,7 +9,7 @@ const AstroObject = ({match}) => {
     const astroObject = useSelector(state => state.astroObjects.find(astroObject => astroObject.id === astroObjectId))
 
     return (
-        <Aux>
+        <React.Fragment>
             <section className="section section-lg">
                 <section className="section">
                     <Container>
@@ -28,7 +27,7 @@ const AstroObject = ({match}) => {
                     </Container>
                 </section>
             </section>
-        </Aux>
+        </React.Fragment>
     );
 }
 

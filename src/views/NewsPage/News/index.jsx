@@ -1,11 +1,10 @@
 import React from "react";
-import Aux from "hoc/Aux";
 
 const News = () => {
     return (
-        <Aux>
+        <React.Fragment>
 
-        </Aux>
+        </React.Fragment>
     );
 }
 
