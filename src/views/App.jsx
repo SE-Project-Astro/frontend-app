@@ -7,7 +7,7 @@ import AstroObjects from "./AstroObjects";
 import AstroObject from "./AstroObjects/AstroObject";
 import AddNewAstroObj from "./AddNewAstroObj/AddNewAstroObj";
 import NewsPage from "./NewsPage";
-import LoginPage from "views/LoginForm"
+import LoginPage from "views/examples/LoginPage";
 import News from "./NewsPage/News";
 import RingLoader from "react-spinners/RingLoader";
 import NewLandingPage from "views/examples/NewLandingPage";
