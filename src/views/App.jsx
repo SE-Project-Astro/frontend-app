@@ -10,7 +10,7 @@ import NewsPage from "./NewsPage";
 import LoginPage from "views/LoginForm"
 import News from "./NewsPage/News";
 import RingLoader from "react-spinners/RingLoader";
-import Index from "views/Index";
+import NewLandingPage from "views/examples/NewLandingPage";
 import {useDispatch, useSelector} from "react-redux";
 import {setAuthToken} from "../redux/api/client";
 import {setAdminLoginState} from "redux/slices/authSlice"
@@ -49,6 +49,7 @@ const App = () => {
                   path="/login"
                   render={(props) => <LoginPage {...props} />}
               />
+              <Route path="/landing" render={(props) => <NewLandingPage {...props} />} />
               { isAdminLogin || isRegUserLogin ?
                 <React.Fragment>
                   <Route path="/astro/:astroObjectId" component={AstroObject}/>
@@ -64,9 +65,8 @@ const App = () => {
                   <Route path="/news/:newsId" component={News} />
                   <Route path="/news" render={(props) => <NewsPage {...props} />} />
                   <Route path="/lunarCalendar" component={lunarCalendar} />
-                  <Route path="/" render={(props) => <Index {...props} />} />
                 </React.Fragment>
-              : <Redirect to="/login" />}
+              : <Redirect to="/landing" />}
             </Switch>
           </Fade>
         </Layout>

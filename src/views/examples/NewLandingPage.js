@@ -222,9 +222,6 @@ export default function LandingPage() {
                 </Row>
               </Container>
             </div>
-          
-            
-        <Footer />
       </div>
     </>
   );
