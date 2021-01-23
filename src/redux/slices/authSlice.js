@@ -1,48 +1,56 @@
 import {createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import {setAuthToken, unSetAuthToken} from "../api/client";
 
 const initialState = {
+    // accessToken: "",
     userData: null,
     isAdminLogin: false,
     isRegUserLogin: false,
-    adminAccessToken: "",
-    regUserAccessToken: "",
 }
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setAdminAccessToken(state, action) {
-            state.adminAccessToken = action.payload
+        setAccessToken(state, action) {
+            // state.accessToken = action.payload
+            setAuthToken(action.payload);
         },
         setAdminLoginState(state, action) {
-            if(state.adminAccessToken) {
+            if(state.userData) {
                 state.isAdminLogin = true
             }
         },
-        setRegUserAccessToken(state, action) {
-            state.regUserAccessToken = action.payload
-        },
         setRegUserLoginState(state, action) {
-            if(state.regUserAccessToken) {
+            if(state.userData) {
                 state.isRegUserLogin = true
             }
         },
         setUserData(state, action) {
             state.userData = action.payload
         },
+        unSetAccessToken(state, action ) {
+            unSetAuthToken();
+            state.isAdminLogin =false
+            state.isRegUserLogin = false
+        }
     }
 });
 
 
 const loginThunkFunction = (username, password) => {
+    const userAuthData = {
+        "UserName": username,
+        "pass": password
+    }
     return async (dispatch, getState) => {
         try {
-            const response = await axios.post(`http://localhost:3000/auth/login?username=${username}&password=${password}`);
-            dispatch(authSlice.actions.setAdminAccessToken("token"))
-            dispatch(authSlice.actions.setAdminLoginState())
-            console.log(response.data)
+            const response = await axios.post(`http://localhost:3000/auth/login`, userAuthData);
+            dispatch(authSlice.actions.setAccessToken(response.data.token));
+            dispatch(authSlice.actions.setUserData(response.data.user));
+            dispatch(authSlice.actions.setAdminLoginState());
+            console.log(response.data);
             return response.data;
         }
         catch (e) {
@@ -90,7 +98,7 @@ const logoutThunkFunction = () => {
     }
 }
 
-export const {setUserType, setAccessToken, setUserData} = authSlice.actions
+export const {setUserData, setAccessToken, setAdminLoginState, setRegUserLoginState, unSetAccessToken} = authSlice.actions
 
 export {loginThunkFunction,registerThunkFunction, passwordResetThunkFunction, logoutThunkFunction}
 

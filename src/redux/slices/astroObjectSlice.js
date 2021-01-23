@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 
 const initialState = {
@@ -9,18 +10,14 @@ const initialState = {
     error: null
 }
 
+
 const astroObjectSlice = createSlice({
     name: 'astroObjects',
     initialState,
     reducers: {
         astroObjectAdded: {
             reducer(state, action) {
-                state.astroObjects.push(action.payload)
-            },
-            prepare(tag, image, desc) {
-                return {
-                    payload: {tag, image, desc}
-                }
+                state.astroObjects.push(...action.payload)
             }
         },
         astroObjectUpdated(state, action) {
@@ -33,15 +30,19 @@ const astroObjectSlice = createSlice({
     }
 });
 
-const fetchAstroObjects = createAsyncThunk('astroObjects/fetchAstroObjects', async () => {
-    try {
-        const response = await axios.get('https://reqres.in/api/users?page=2');
-        return response.data;
+// const fetchAstroObjects = createAsyncThunk('astroObjects/fetchAstroObjects', async () => {
+//     const accessToken = useSelector(state => state.users.accessToken)
+//
+//         const response = await axios.get('https://reqres.in/api/users?page=2')
+//         console.log(response);
+// })
+const fetchAstroObjects =  () => {
+    return async (dispatch, getState) =>
+    {
+        const response = await axios.get('/api/getAstrList?count=5&tbName=astronomical_object')
+        dispatch(astroObjectAdded(response.data))
     }
-    catch (e) {
-        return e.response;
-    }
-})
+}
 
 export const { astroObjectAdded, astroObjectUpdated } = astroObjectSlice.actions;
 

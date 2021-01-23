@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 
 const configJoditEditor = {
-  //theme: "dark",
+  theme: "dark",
   readonly: false, // all options from https://xdsoft.net/jodit/doc/
 };
 
@@ -22,7 +22,7 @@ class AddNews extends Component {
   state = {
     editor: null,
     title: "",
-    content: '<p><span style="color: rgb(0, 0, 0);">&nbsp;</span><br></p>',
+    content: "",
   };
 
   handleTextAreaChange = (newtextAreaValue) => {
@@ -44,7 +44,7 @@ class AddNews extends Component {
       typeof this.state.content === "string" &&
       this.state.content !== "" &&
       this.state.content !==
-        '<p><span style="color: rgb(0, 0, 0);">&nbsp;</span><br></p>'
+        '<><span style="color: rgb(0, 0, 0);">&nbsp;</span><br></>'
     ) {
       return true;
     } else {
