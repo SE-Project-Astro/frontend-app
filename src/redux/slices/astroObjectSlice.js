@@ -55,6 +55,17 @@ const fetchAstroObjects =  () => {
     }
 }
 
+const addNewAstroObject = () => {
+    return async (dispatch, getState) => {
+        try {
+            
+        }
+        catch (e) {
+            
+        }
+    }
+}
+
 export const { astroObjectAdded, astroObjectUpdated } = astroObjectSlice.actions;
 
 export default astroObjectSlice.reducer;
