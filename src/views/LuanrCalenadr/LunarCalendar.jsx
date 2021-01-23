@@ -221,7 +221,7 @@ class LunarCalendar extends Component {
 
   render() {
     return (
-      <div className="section section-pagination">
+      <div className="section section-pagination my-4">
         <img
           alt="..."
           className="path"

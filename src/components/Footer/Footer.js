@@ -93,9 +93,8 @@ export default function Footer() {
                 color="default"
                 href="https://twitter.com/creativetim"
                 id="tooltip622135962"
-                target="_blank"
               >
-                <i className="fab fa-twitter" />
+                <img src="https://icons-for-free.com/iconfiles/png/512/color+twitter+icon-1320168273637260673.png" />
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip622135962">
                 Follow us
@@ -107,7 +106,7 @@ export default function Footer() {
                 id="tooltip230450801"
                 target="_blank"
               >
-                <i className="fab fa-facebook-square" />
+                <img src="https://icons-for-free.com/iconfiles/png/512/color+facebook+icon-1320168272811213233.png" />
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip230450801">
                 Like us
@@ -119,7 +118,7 @@ export default function Footer() {
                 id="tooltip318450378"
                 target="_blank"
               >
-                <i className="fab fa-dribbble" />
+                <img src="https://icons-for-free.com/iconfiles/png/512/color+instagram+icon-1320168273182259018.png" />
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip318450378">
                 Follow us

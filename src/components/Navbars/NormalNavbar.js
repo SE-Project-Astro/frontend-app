@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 // reactstrap components
@@ -29,7 +28,7 @@ export default function NormalNavbar() {
     return function cleanup() {
       window.removeEventListener("scroll", changeColor);
     };
-  },[]);
+  }, []);
   const changeColor = () => {
     if (
       document.documentElement.scrollTop > 99 ||
@@ -62,7 +61,16 @@ export default function NormalNavbar() {
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
       <Container>
         <div className="navbar-translate">
-          <NavbarBrand style={{fontFamily: "Nunito, sans-serif", fontWeight: "700", fontSize: "20px"}} to="/" tag={Link} id="navbar-brand">
+          <NavbarBrand
+            style={{
+              fontFamily: "Nunito, sans-serif",
+              fontWeight: "700",
+              fontSize: "20px",
+            }}
+            to="/"
+            tag={Link}
+            id="navbar-brand"
+          >
             GUIDE Astro
           </NavbarBrand>
           <button
@@ -76,7 +84,7 @@ export default function NormalNavbar() {
           </button>
         </div>
         <Collapse
-          className={"justify-content-end " + collapseOut}
+          className={"content-left " + collapseOut}
           navbar
           isOpen={collapseOpen}
           onExiting={onCollapseExiting}
@@ -101,10 +109,23 @@ export default function NormalNavbar() {
             </Row>
           </div>
           <Nav navbar>
-            
-            
-            
-            <UncontrolledDropdown nav>
+            <NavItem className="">
+              <NavLink tag={Link} to="/astro">
+                Astronomical Objects
+              </NavLink>
+            </NavItem>
+            <NavItem className="active">
+              <NavLink tag={Link} to="/news">
+                News Page
+              </NavLink>
+            </NavItem>
+            <NavItem className="">
+              <NavLink tag={Link} to="/lunarCalendar">
+                Lunar Calendar
+              </NavLink>
+            </NavItem>
+
+            {/* <UncontrolledDropdown nav>
               <DropdownToggle
                 caret
                 color="default"
@@ -125,9 +146,12 @@ export default function NormalNavbar() {
                   <i className="tim-icons icon-image-02" />
                   News Page
                 </DropdownItem>
-                
+                <DropdownItem tag={Link} to="/lunarCalendar">
+                  <i className="tim-icons icon-image-02" />
+                  Lunar Calendar
+                </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
             <NavItem>
               <Button
                 className="nav-link d-none d-lg-block"

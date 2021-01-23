@@ -1,34 +1,26 @@
-import React, { Component, useState, useRef } from "react";
+import React, { Component, useCallback, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import JoditEditor from "jodit-react";
+import TextEditor from "../../components/TextEditor/TextEditor";
+import { useSelector } from "react-redux";
 
 // reactstrap components
-import {
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Button,
-  Card,
-  CardBody,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { FormGroup, Label, Input, Button, Container } from "reactstrap";
 
 const configJoditEditor = {
-  //theme: "dark",
+  theme: "dark",
   readonly: false, // all options from https://xdsoft.net/jodit/doc/
 };
 class AddNewAstroObj extends Component {
   state = {
-    images: [],
+    //images: [],
     imageUrl: "",
-
-    editor: null,
     objName: "",
-    content: '<p><span style="color: rgb(0, 0, 0);">&nbsp;</span><br></p>',
+    content: "",
   };
+
+  componentDidMount() {
+    console.log(this.props);
+  }
 
   handleTextAreaChange = (newtextAreaValue) => {
     const content = newtextAreaValue;
@@ -41,14 +33,19 @@ class AddNewAstroObj extends Component {
   };
   handleSubmit = () => {
     console.log("content ", this.state.content);
+
+    //const history = useHistory();
+    //useCallback((id) => history.replace("/astro"), [history]);
   };
-  handleAddImageUrl = () => {
+
+  /*handleAddImageUrl = () => {
     const images = [...this.state.images, this.state.imageUrl];
     const imageUrl = "";
     this.setState({ images });
     this.setState({ imageUrl });
     //console.log(images);
-  };
+  };*/
+
   handleImageUrlChange = (e) => {
     const imageUrl = e.target.value;
     this.setState({ imageUrl });
@@ -68,8 +65,7 @@ class AddNewAstroObj extends Component {
       this.state.objName !== "" &&
       typeof this.state.content === "string" &&
       this.state.content !== "" &&
-      this.state.content !==
-        '<p><span style="color: rgb(0, 0, 0);">&nbsp;</span><br></p>'
+      this.isImageUrl(this.state.imageUrl)
     ) {
       return true;
     } else {
@@ -118,16 +114,16 @@ class AddNewAstroObj extends Component {
                 placeholder="Enter image url"
                 onChange={this.handleImageUrlChange}
               />
-              <Button
+              {/* <Button
                 onClick={this.handleAddImageUrl}
                 className="btn-round btn-icon mb-2"
                 color="primary"
                 disabled={!this.isImageUrl()}
               >
                 <i className="tim-icons icon-simple-add" />
-              </Button>
+              </Button> */}
             </FormGroup>
-            <Row>
+            {/* <Row>
               {this.state.images.map((img) => (
                 <Col key={img} sm="3">
                   <img alt="..." className="img-raised" src={img} />
@@ -141,19 +137,25 @@ class AddNewAstroObj extends Component {
                   </Button>
                 </Col>
               ))}
-            </Row>
+            </Row> */}
             <FormGroup>
               <Label>Description</Label>
-              <JoditEditor
+              <TextEditor
+                value={this.state.content}
+                onChange={this.handleTextAreaChange}
+              />
+              {/* <JoditEditor
                 className="text-dark bg-dark"
                 ref={this.state.editor}
                 config={configJoditEditor}
                 value={this.state.content}
                 tabIndex={2} // tabIndex of textarea
                 onChange={this.handleTextAreaChange}
-              />
+              /> */}
             </FormGroup>
             <Button
+              tag={Link}
+              to="/lunarCalendar"
               onClick={this.handleSubmit}
               color="primary"
               disabled={!this.isValidForm()}
