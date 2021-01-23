@@ -19,7 +19,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import store from "redux/store";
-import { Provider } from "react-redux";
+import {Provider, useDispatch} from "react-redux";
 
 import "assets/css/nucleo-icons.css";
 import "assets/scss/blk-design-system-react.scss?v=1.2.0";
@@ -29,23 +29,27 @@ import LandingPage from "views/examples/LandingPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import App from "views/App";
+import {setAuthToken} from "./redux/api/client";
+
+setAuthToken(sessionStorage.getItem("token"))
+
 
 ReactDOM.render(
   <BrowserRouter>
-    <Switch>
-      <Route
-        path="/landing-page"
-        render={(props) => <LandingPage {...props} />}
-      />
-      <Route
-        path="/register-page"
-        render={(props) => <RegisterPage {...props} />}
-      />
-      <Route
-        path="/profile-page"
-        render={(props) => <ProfilePage {...props} />}
-      />
-    </Switch>
+    {/*<Switch>*/}
+    {/*  <Route*/}
+    {/*    path="/landing-page"*/}
+    {/*    render={(props) => <LandingPage {...props} />}*/}
+    {/*  />*/}
+    {/*  <Route*/}
+    {/*    path="/register-page"*/}
+    {/*    render={(props) => <RegisterPage {...props} />}*/}
+    {/*  />*/}
+    {/*  <Route*/}
+    {/*    path="/profile-page"*/}
+    {/*    render={(props) => <ProfilePage {...props} />}*/}
+    {/*  />*/}
+    {/*</Switch>*/}
     <Provider store={store}>
       <App store={store} />
     </Provider>

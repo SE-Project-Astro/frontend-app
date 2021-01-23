@@ -11,19 +11,21 @@ import LoginPage from "views/LoginForm"
 import News from "./NewsPage/News";
 import RingLoader from "react-spinners/RingLoader";
 import Index from "views/Index";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setAuthToken} from "../redux/api/client";
+import {setAdminLoginState} from "redux/slices/authSlice"
 
 const App = () => {
   let [loading, setLoading] = useState(true);
   let isAdminLogin = useSelector(state => state.users.isAdminLogin)
   let isRegUserLogin = useSelector(state => state.users.isRegUserLogin)
-
+  const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2500);
+    dispatch(setAdminLoginState(sessionStorage.getItem("token")))
   }, []);
-
   return (
     <React.Fragment>
       {loading ? (

@@ -10,20 +10,22 @@ import {fetchAstroObjects} from "redux/slices/astroObjectSlice";
 const Index = () => {
   const dispatch = useDispatch();
   const astroObjects = useSelector(selectAllAstroObjects);
-  astroObjects.map(as => console.log(as.image))
+  const status = useSelector(state => state.astroObjects.status)
   const history = useHistory();
   const handleOnClick = useCallback((id) => history.push(`/astro/${id}`), [
     history,
   ]);
+
+  if(status === "idle") {
+    dispatch(fetchAstroObjects())
+  }
+
   return (
     <React.Fragment>
       <section className="section section-lg">
         <section className="section">
           <Container>
             <Row className="mb-4">
-              <Button onClick={() => dispatch(fetchAstroObjects())}>
-                Get AstroObjects
-              </Button>
               <Button tag={Link} to="/astroAdd" color="info">
                 Add a New Object
               </Button>

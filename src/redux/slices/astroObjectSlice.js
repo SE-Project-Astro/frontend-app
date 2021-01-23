@@ -7,7 +7,6 @@ import {useSelector} from "react-redux";
 const initialState = {
     astroObjects: [],
     status: 'idle',
-    error: null
 }
 
 
@@ -26,21 +25,33 @@ const astroObjectSlice = createSlice({
             if (existingObject) {
                 existingObject.desc = desc;
             }
+        },
+        setLoadingStatus(state, action) {
+            state.status = 'loading'
+        },
+        setResultStatus(state, action) {
+            if(action.payload) {
+                state.status = "success"
+            }
+            else {
+                state.status = "error"
+            }
         }
+
     }
 });
-
-// const fetchAstroObjects = createAsyncThunk('astroObjects/fetchAstroObjects', async () => {
-//     const accessToken = useSelector(state => state.users.accessToken)
-//
-//         const response = await axios.get('https://reqres.in/api/users?page=2')
-//         console.log(response);
-// })
 const fetchAstroObjects =  () => {
     return async (dispatch, getState) =>
     {
-        const response = await axios.get('/api/getAstrList?count=5&tbName=astronomical_object')
-        dispatch(astroObjectAdded(response.data))
+        try {
+            dispatch(astroObjectSlice.actions.setLoadingStatus())
+            const response = await axios.get('/api/getAstrList?count=5&tbName=astronomical_object')
+            dispatch(astroObjectAdded(response.data))
+            dispatch(astroObjectSlice.actions.setResultStatus(true))
+        }
+        catch (e) {
+            dispatch(astroObjectSlice.actions.setResultStatus(false))
+        }
     }
 }
 

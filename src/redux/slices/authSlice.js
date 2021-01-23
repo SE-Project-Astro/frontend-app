@@ -3,7 +3,7 @@ import axios from "axios";
 import {setAuthToken, unSetAuthToken} from "../api/client";
 
 const initialState = {
-    // accessToken: "",
+    accessToken: sessionStorage.getItem("token"),
     userData: null,
     isAdminLogin: false,
     isRegUserLogin: false,
@@ -14,16 +14,17 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         setAccessToken(state, action) {
-            // state.accessToken = action.payload
+            sessionStorage.setItem("token", action.payload)
+            state.accessToken = action.payload
             setAuthToken(action.payload);
         },
         setAdminLoginState(state, action) {
-            if(state.userData) {
+            if(state.accessToken) {
                 state.isAdminLogin = true
             }
         },
         setRegUserLoginState(state, action) {
-            if(state.userData) {
+            if(state.accessToken) {
                 state.isRegUserLogin = true
             }
         },
@@ -32,6 +33,7 @@ const authSlice = createSlice({
         },
         unSetAccessToken(state, action ) {
             unSetAuthToken();
+            sessionStorage.removeItem("token")
             state.isAdminLogin =false
             state.isRegUserLogin = false
         }
