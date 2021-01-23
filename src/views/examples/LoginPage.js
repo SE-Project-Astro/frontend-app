@@ -17,6 +17,8 @@ import{
     Input,
 
 }from "reactstrap";
+import {useDispatch} from "react-redux";
+import { loginThunkFunction } from "../../redux/slices/authSlice";
 
 export default function LoginPage(){
     //form focusing states
@@ -25,6 +27,13 @@ export default function LoginPage(){
     //status for validation purposes
     const[stateInput,setStateInput]=React.useState({input: {}});
     const[stateError,setStateError]=React.useState({error: {}});
+
+    //for authendication purposes
+    const dispatch = useDispatch();
+    const submitHandler = (username,password) => {
+        
+        dispatch(loginThunkFunction(username, password))
+    }
 
     //functions for validation
     const handleChange = (event)=>{
@@ -39,15 +48,18 @@ export default function LoginPage(){
     const handleSubmit =(event)=> {
         event.preventDefault();
         if(validate()){
-            console.log(stateInput);
+            
             let input = {};
+            let Email= stateInput.input.Email;
+            let Password=stateInput.input.Password;
             input["Email"]="";
             input["Password"]="";
 
             setStateInput({
                 input: input
             });
-            alert('login Successfull');
+            
+            submitHandler(Email,Password);
         }
     };
 
