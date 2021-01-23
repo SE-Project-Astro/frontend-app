@@ -61,6 +61,7 @@ const loginThunkFunction = (username, password) => {
     }
 }
 
+
 const registerThunkFunction = (username, password, type) => {
     return async (dispatch, getState) => {
         try {

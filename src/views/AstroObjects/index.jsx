@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import CardWithImage from "../../components/CardWithImage";
 import { Row, Container, Col, Button } from "reactstrap";
 import { useHistory } from "react-router";
@@ -16,9 +16,11 @@ const Index = () => {
     history,
   ]);
 
-  if(status === "idle") {
-    dispatch(fetchAstroObjects())
-  }
+  useEffect(() => {
+    if(status === "idle") {
+      dispatch(fetchAstroObjects())
+    }
+  }, [status, dispatch])
 
   return (
     <React.Fragment>
@@ -37,7 +39,7 @@ const Index = () => {
                   md="6"
                   xl="4"
                   onClick={() => handleOnClick(astroObject.name)}
-                  key={astroObject.name}
+                  key={astroObject.id}
                 >
                   <CardWithImage
                     image={astroObject.image}

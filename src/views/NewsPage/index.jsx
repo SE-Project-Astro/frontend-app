@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row, Button } from "reactstrap";
 import CardWithImage from "components/CardWithImage";
@@ -9,22 +9,28 @@ import blueorigin_news_1 from "../../assets/img/News/blueorigin_news_1.jpg";
 
 import { useHistory } from "react-router";
 
-import {selectAllNews} from "redux/slices/newsSlice";
-import {useSelector} from "react-redux";
+import {fetchNews, selectAllNews} from "redux/slices/newsSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 const NewsPage = () => {
   const history = useHistory();
+  const dispatch = useDispatch()
+  const status = useSelector(state => state.news.status);
+  const newsList = useSelector(state => state.news.news)
   const handleOnClick = useCallback((id) => history.push(`/news/${id}`), [
     history,
   ]);
-  const newsList = useSelector(selectAllNews)
-
+  useEffect(() => {
+    if(status === "idle") {
+      dispatch(fetchNews())
+    }
+  }, [status, dispatch])
   return (
     <section className="section section-lg">
       <section className="section">
-        <Container>
+        {newsList.length >= 3 ? <Container>
           <Row className="mb-4">
             <Button tag={Link} to="/newsAdd" color="info">
               Add a News
@@ -33,16 +39,16 @@ const NewsPage = () => {
           <Row>
             <Col xs="12" xl="8" onClick={() => handleOnClick(1)}>
               <CardWithImage
-                image={newsList[0].image}
-                headingType="h2"
-                height="550px"
-                cardTitle={newsList[0].title}
-                cardText={newsList[0].cardText}
-                lastUpdatedText={newsList[0].timestamp}
+                  image={newsList[0].image}
+                  headingType="h2"
+                  height="550px"
+                  cardTitle={newsList[0].title}
+                  cardText={newsList[0].cardText}
+                  lastUpdatedText={newsList[0].timestamp}
               />
             </Col>
             <Col xs="12" xl="4">
-              <Col xs="12" style={{ padding: "0px" }}>
+              <Col xs="12" style={{padding: "0px"}}>
                 <CardWithImage
                     image={newsList[1].image}
                     cardTitle={newsList[1].title}
@@ -50,7 +56,7 @@ const NewsPage = () => {
                     lastUpdatedText={newsList[1].timestamp}
                 />
               </Col>
-              <Col xs="12" style={{ padding: "0px" }}>
+              <Col xs="12" style={{padding: "0px"}}>
                 <CardWithImage
                     image={newsList[2].image}
                     cardTitle={newsList[2].title}
@@ -70,7 +76,7 @@ const NewsPage = () => {
               />
             </Col>}
           </Row>
-        </Container>
+        </Container> : null}
       </section>
     </section>
   );

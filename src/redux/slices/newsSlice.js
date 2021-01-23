@@ -45,6 +45,7 @@ const fetchNews =  () => {
         try {
             dispatch(newsSlice.actions.setLoadingStatus())
             const response = await axios.get('/api/getNewsList?count=5')
+            console.log(response)
             dispatch(newsAdded(response.data))
             dispatch(newsSlice.actions.setResultStatus(true))
         }

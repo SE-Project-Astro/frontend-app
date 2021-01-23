@@ -20,8 +20,8 @@ const astroObjectSlice = createSlice({
             }
         },
         astroObjectUpdated(state, action) {
-            const {tag, image, desc} = action.payload;
-            const existingObject = state.astroObjects.find(astroObject => astroObject.tag === tag);
+            const {id, image, desc} = action.payload;
+            const existingObject = state.astroObjects.find(astroObject => astroObject.id === id);
             if (existingObject) {
                 existingObject.desc = desc;
             }
