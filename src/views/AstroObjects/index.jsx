@@ -3,14 +3,14 @@ import CardWithImage from "../../components/CardWithImage";
 import { Row, Container, Col, Button } from "reactstrap";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {selectAllAstroObjects} from "redux/slices/astroObjectSlice";
-import {fetchAstroObjects} from "redux/slices/astroObjectSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAllAstroObjects } from "redux/slices/astroObjectSlice";
+import { fetchAstroObjects } from "redux/slices/astroObjectSlice";
 
 const Index = () => {
   const dispatch = useDispatch();
   const astroObjects = useSelector(selectAllAstroObjects);
-  const status = useSelector(state => state.astroObjects.status)
+  const status = useSelector((state) => state.astroObjects.status);
   const history = useHistory();
   const handleOnClick = useCallback((id) => history.push(`/astro/${id}`), [
     history,
@@ -55,6 +55,6 @@ const Index = () => {
       </section>
     </React.Fragment>
   );
-}
+};
 
 export default Index;

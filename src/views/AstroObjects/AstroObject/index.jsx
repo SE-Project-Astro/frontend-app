@@ -30,8 +30,12 @@ const AstroObject = ({ match }) => {
         Planets in the Solar System are divided into two main types: large low-density giant planets, and smaller rocky terrestrials. There are eight planets in the Solar System according to the IAU definition.[1] In order of increasing distance from the Sun, they are the four terrestrials, Mercury, Venus, Earth, and Mars, then the four giant planets, Jupiter, Saturn, Uranus, and Neptune. Six of the planets are orbited by one or more natural satellites.</span><br></p>`;
 
   const astroObject = useSelector((state) =>
-    state.astroObjects.astroObjects.find((astroObject) => astroObject.name === astroObjectId)
+    state.astroObjects.astroObjects.find(
+      (astroObject) => astroObject.name === astroObjectId
+    )
   );
+
+  //console.log(htmlToReact(content).innerText);
 
   return (
     <React.Fragment>
@@ -54,7 +58,10 @@ const AstroObject = ({ match }) => {
               {htmlToReact(content)}
             </div>
             <div className="my-3 text-right">
-              <Button onClick={() => handleUpdate(astroObject.name)} color="info">
+              <Button
+                onClick={() => handleUpdate(astroObject.name)}
+                color="info"
+              >
                 Update
               </Button>
             </div>

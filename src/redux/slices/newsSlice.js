@@ -1,43 +1,39 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
-
 const initialState = {
-    news: [],
-    status: 'idle',
-}
-
+  news: [],
+  status: "idle",
+};
 
 const newsSlice = createSlice({
-    name: 'news',
-    initialState,
-    reducers: {
-        newsAdded: {
-            reducer(state, action) {
-                state.news.push(...action.payload)
-            }
-        },
-        newsUpdated(state, action) {
-            const {id, image, desc} = action.payload;
-            const existingObject = state.news.find(newsItem => newsItem.id === id);
-            if (existingObject) {
-                existingObject.desc = desc;
-            }
-        },
-        setLoadingStatus(state, action) {
-            state.status = 'loading'
-        },
-        setResultStatus(state, action) {
-            if(action.payload) {
-                state.status = "success"
-            }
-            else {
-                state.status = "error"
-            }
-        }
-
-    }
+  name: "news",
+  initialState,
+  reducers: {
+    newsAdded: {
+      reducer(state, action) {
+        state.news.push(...action.payload);
+      },
+    },
+    newsUpdated(state, action) {
+      const { id, image, desc } = action.payload;
+      const existingObject = state.news.find((newsItem) => newsItem.id === id);
+      if (existingObject) {
+        existingObject.desc = desc;
+      }
+    },
+    setLoadingStatus(state, action) {
+      state.status = "loading";
+    },
+    setResultStatus(state, action) {
+      if (action.payload) {
+        state.status = "success";
+      } else {
+        state.status = "error";
+      }
+    },
+  },
 });
 const fetchNews =  () => {
     return async (dispatch, getState) =>
@@ -52,15 +48,16 @@ const fetchNews =  () => {
         catch (e) {
             dispatch(newsSlice.actions.setResultStatus(false))
         }
-    }
-}
+  };
+};
 
 export const { newsAdded, newsUpdated } = newsSlice.actions;
 
 export default newsSlice.reducer;
 
-export {fetchNews}
+export { fetchNews };
 
-export const selectAllNews = state => state.news.news;
+export const selectAllNews = (state) => state.news.news;
 
-export const selectNewsByID = (state, newsId) => state.news.news.find(newsItem => newsItem.id === newsId);
+export const selectNewsByID = (state, newsId) =>
+  state.news.news.find((newsItem) => newsItem.id === newsId);

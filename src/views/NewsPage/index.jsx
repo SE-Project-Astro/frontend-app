@@ -8,7 +8,6 @@ import spacex_news_1 from "../../assets/img/News/spacex_news_1.webp";
 import blueorigin_news_1 from "../../assets/img/News/blueorigin_news_1.jpg";
 
 import { useHistory } from "react-router";
-
 import {fetchNews, selectAllNews} from "redux/slices/newsSlice";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -50,31 +49,31 @@ const NewsPage = () => {
             <Col xs="12" xl="4">
               <Col xs="12" style={{padding: "0px"}}>
                 <CardWithImage
-                    image={newsList[1].image}
-                    cardTitle={newsList[1].title}
-                    cardText={newsList[1].cardText}
-                    lastUpdatedText={newsList[1].timestamp}
+                  image={newsList[1].image}
+                  cardTitle={newsList[1].title}
+                  cardText={newsList[1].cardText}
+                  lastUpdatedText={newsList[1].timestamp}
                 />
               </Col>
               <Col xs="12" style={{padding: "0px"}}>
                 <CardWithImage
-                    image={newsList[2].image}
-                    cardTitle={newsList[2].title}
-                    cardText={newsList[2].cardText}
-                    lastUpdatedText={newsList[2].timestamp}
+                  image={newsList[2].image}
+                  cardTitle={newsList[2].title}
+                  cardText={newsList[2].cardText}
+                  lastUpdatedText={newsList[2].timestamp}
                 />
               </Col>
-            </Col>
+            </Col> */}
           </Row>
           <Row>
-            {<Col xs="12" md="6" xl="4">
-              <CardWithImage
+              <Col xs="12" md="6" xl="4">
+                <CardWithImage
                   image={blueorigin_news_1}
                   cardTitle="Mission NS-14 successfully demonstrates crew capsule upgrades"
                   cardText="Mission NS-14 featured a crew capsule outfitted with astronaut experience upgrades for upcoming flights with passengers onboard. Capsule upgrades included: "
                   lastUpdatedText="Last updated 5 mins ago"
-              />
-            </Col>}
+                />
+              </Col>
           </Row>
         </Container> : null}
       </section>
