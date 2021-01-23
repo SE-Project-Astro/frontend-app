@@ -148,7 +148,7 @@ export default function RegisterPage() {
       
     <>
       
-      <RegNavbar />
+      
       <div className="wrapper">
         <div className="page-header">
           <div className="page-header-image" />
@@ -156,16 +156,7 @@ export default function RegisterPage() {
             <Container>
               <Row>
                 <Col className="offset-lg-0 offset-md-3" lg="5" md="6">
-                  <div
-                    className="square square-7"
-                    id="square7"
-                    style={{ transform: squares7and8 }}
-                  />
-                  <div
-                    className="square square-8"
-                    id="square8"
-                    style={{ transform: squares7and8 }}
-                  />
+                  
                   <Card className="card-register">
                     <CardHeader>
                       <CardImg
@@ -322,7 +313,7 @@ export default function RegisterPage() {
             </Container>
           </div>
         </div>
-        <Footer />
+        
       </div>
     </>
   );
