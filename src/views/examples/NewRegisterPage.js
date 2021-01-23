@@ -25,6 +25,8 @@ import {
 // core components
 import RegNavbar from "components/Navbars/RegNavbar.js";
 import Footer from "components/Footer/Footer.js";
+import {useDispatch} from "react-redux";
+import { registerThunkFunction } from "../../redux/slices/authSlice";
 
 export default function RegisterPage() {
   //mouse following square states  
@@ -84,6 +86,14 @@ export default function RegisterPage() {
       
   }
 
+
+  //for authendication purposes
+    const dispatch = useDispatch();
+    const submitHandler = (email,password,firstName,lastName) => {
+        
+        dispatch(registerThunkFunction(email, password,firstName,lastName))
+    }
+
   const handleChange = (event) => {
       let input =stateInput.input;
       input[event.target.name]=event.target.value;
@@ -103,6 +113,7 @@ export default function RegisterPage() {
         input["Last"] ="";
         input["Email"] ="";
         input["Password"]="";
+
 
         setStateInput({
           input:input

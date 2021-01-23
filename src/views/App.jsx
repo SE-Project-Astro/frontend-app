@@ -8,6 +8,7 @@ import AstroObject from "./AstroObjects/AstroObject";
 import AddNewAstroObj from "./AddNewAstroObj/AddNewAstroObj";
 import NewsPage from "./NewsPage";
 import LoginPage from "views/examples/LoginPage";
+import RegisterPage from "views/examples/NewRegisterPage";
 import News from "./NewsPage/News";
 import RingLoader from "react-spinners/RingLoader";
 import NewLandingPage from "views/examples/NewLandingPage";
@@ -48,6 +49,10 @@ const App = () => {
               <Route
                   path="/login"
                   render={(props) => <LoginPage {...props} />}
+              />
+              <Route
+                  path="/reg"
+                  render={(props) => <RegisterPage {...props} />}
               />
               <Route path="/landing" render={(props) => <NewLandingPage {...props} />} />
               { isAdminLogin || isRegUserLogin ?
