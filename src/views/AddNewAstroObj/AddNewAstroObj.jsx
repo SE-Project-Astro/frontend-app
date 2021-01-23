@@ -1,6 +1,7 @@
 import React, { Component, useCallback, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import TextEditor from "../../components/TextEditor/TextEditor";
+//import TextEditor from "../../components/TextEditor/RichTextEditor";
 import { useSelector } from "react-redux";
 
 // reactstrap components
@@ -140,10 +141,11 @@ class AddNewAstroObj extends Component {
             </Row> */}
             <FormGroup>
               <Label>Description</Label>
-              <TextEditor
+              {/* <TextEditor
                 value={this.state.content}
                 onChange={this.handleTextAreaChange}
-              />
+              /> */}
+              <TextEditor />
               {/* <JoditEditor
                 className="text-dark bg-dark"
                 ref={this.state.editor}
