@@ -151,7 +151,7 @@ export default function NormalNavbar() {
                                     color="default"
                                     href="/profile-page"
                                 >
-                                    <i className="tim-icons icon-single-02"/> Sign up
+                                    <i className="tim-icons icon-single-02"/> Register
                                 </Button>
                             </NavItem>
                         }
@@ -159,7 +159,8 @@ export default function NormalNavbar() {
                             <Button
                                 className="nav-link d-none d-lg-block"
                                 color="default"
-                                href="/profile-page"
+                                to="/login"
+                                tag={Link}
                             >
                                 <i className="tim-icons icon-single-02"/> {isAdminLogin || isRegUserLogin ? "Profile" : "Sign in"}
                             </Button>
