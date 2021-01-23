@@ -61,10 +61,19 @@ const loginThunkFunction = (username, password) => {
     }
 }
 
-const registerThunkFunction = (username, password, type) => {
+
+const registerThunkFunction = (email, password, firstname, lastname) => {
+    const userData = {
+        "UserName": email,
+        "pass": password,
+        "type": "regular",
+        "fName": firstname,
+        "lName": lastname,
+    }
+
     return async (dispatch, getState) => {
         try {
-            const response = await axios.post(`localhost:3000/auth/signup?username=${username}&password=${password}&type=${type}`)
+            const response = await axios.post(`/auth/signup`, userData)
             console.log(response.data)
             return response.data
         }
