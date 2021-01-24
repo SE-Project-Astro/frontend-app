@@ -27,6 +27,7 @@ import RegNavbar from "components/Navbars/RegNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import {useDispatch} from "react-redux";
 import { registerThunkFunction } from "../../redux/slices/authSlice";
+import {useHistory} from "react-router-dom";
 
 export default function RegisterPage() {
   //mouse following square states  
@@ -42,6 +43,8 @@ export default function RegisterPage() {
   //states for validation purposes
   const [stateInput,setStateInput]=React.useState({input: {} });
   const [stateError,setStateError]=React.useState({error: {} });
+
+  const history = useHistory();
 
   //functions for validation
   const validate = () => {
@@ -89,9 +92,15 @@ export default function RegisterPage() {
 
   //for authendication purposes
     const dispatch = useDispatch();
-    const submitHandler = (email,password,firstName,lastName) => {
+    const submitHandler = async (email,password,firstName,lastName) => {
         
-        dispatch(registerThunkFunction(email, password,firstName,lastName))
+        const response = await dispatch(registerThunkFunction(email, password,firstName,lastName))
+        if(response === "success") {
+          history.push('/login');
+        }
+        else {
+          console.log(response);
+        }
     }
 
   const handleChange = (event) => {

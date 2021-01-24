@@ -22,6 +22,8 @@ import {
   UncontrolledTooltip,
   UncontrolledCarousel,
 } from "reactstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {passwordResetThunkFunction} from "../../redux/slices/authSlice";
 
 export default function NewProfilePage(){
     const [tabs, setTabs] = React.useState(1);
@@ -34,6 +36,8 @@ export default function NewProfilePage(){
 
     const[currentPassError,setCurrentPassError]= React.useState("");
     const[newPassError,setNewPassError]= React.useState("");
+    const dispatch = useDispatch();
+    const userData = useSelector(state => state.users.userData)
 
     const handleChange = (event)=>{
         setStateChange(false);
@@ -60,6 +64,9 @@ export default function NewProfilePage(){
         }
         if (isValidCurrentPass){
           setCurrentPassError("");
+        }
+        if (isValidCurrentPass && isValidNewPass) {
+          dispatch(passwordResetThunkFunction(currentPass, newPassRE))
         }
     };
 
@@ -139,15 +146,15 @@ export default function NewProfilePage(){
                           <tbody>
                             <tr>
                                 <td>First Name</td>
-                                <td>Tharinda</td>
+                                <td>{userData ? userData.fname : ""}</td>
                             </tr>
                             <tr>
                                 <td>Last Name</td>
-                                <td>Thamaranga</td>
+                                <td>{userData ? userData.lname : ""}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>tharinda@gmail.com</td>
+                                <td>{userData ? userData.UserName : ""}</td>
                             </tr>
 
                           </tbody>
@@ -161,7 +168,7 @@ export default function NewProfilePage(){
                           <Col sm="9">
                             <FormGroup>
                               <Input
-                                placeholder="Tharinda"
+                                placeholder={userData ? userData.fname : ""}
                                 type="text"
                               />
                               
@@ -172,7 +179,7 @@ export default function NewProfilePage(){
                           <Label sm="3">Last Name</Label>
                           <Col sm="9">
                             <FormGroup>
-                              <Input placeholder="Thamaranga"
+                              <Input placeholder={userData ? userData.lname : ""}
                               type="text" 
                               />
                             </FormGroup>
@@ -182,7 +189,7 @@ export default function NewProfilePage(){
                           <Label sm="3">Email</Label>
                           <Col sm="9">
                             <FormGroup>
-                              <Input placeholder="Email"
+                              <Input placeholder={userData ? userData.UserName : ""}
                               type="text" 
                               onChange={(e) => handleChange(e)}
                               />

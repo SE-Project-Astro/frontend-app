@@ -48,11 +48,6 @@ const News = ({ match }) => {
             <div style={({ backgroundColor: "white" }, { color: "white" })}>
               {htmlToReact(news.description)}
             </div>
-            <div className="my-3 text-right">
-              <Button onClick={() => handleUpdate(news.news_id)} color="info">
-                Update
-              </Button>
-            </div>
             <div className="mt-5">
               <h3>{` ${2} Comments`}</h3>
               <form>

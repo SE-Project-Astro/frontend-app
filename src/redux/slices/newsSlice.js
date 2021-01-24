@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
+import {fetchAstroObjects} from "./astroObjectSlice";
 
 const initialState = {
   news: [],
@@ -50,6 +51,28 @@ const fetchNews =  () => {
         }
   };
 };
+
+const addNewNews = (name, image, cardText, content) => {
+    const newsData = {
+        "Title": name,
+        "Image": image,
+        "CardText": cardText,
+        "Desc" : content,
+        "tStamp": ""
+    }
+    return async (dispatch, getState) => {
+        try {
+            dispatch(newsSlice.actions.setLoadingStatus());
+            const response = await axios.post(`/api/AddNews`, newsData)
+            dispatch(newsSlice.actions.setResultStatus(true))
+            dispatch(fetchNews())
+            return response.data;
+        } catch (e) {
+            dispatch(newsSlice.actions.setResultStatus(false))
+            return e.message;
+        }
+    }
+}
 
 export const { newsAdded, newsUpdated } = newsSlice.actions;
 

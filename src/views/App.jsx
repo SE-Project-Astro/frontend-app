@@ -16,7 +16,7 @@ import RingLoader from "react-spinners/RingLoader";
 import NewLandingPage from "views/examples/NewLandingPage";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthToken } from "../redux/api/client";
-import { setAdminLoginState } from "redux/slices/authSlice";
+import { setAdminLoginState, setUserData, serUserType} from "redux/slices/authSlice";
 
 const App = () => {
   let [loading, setLoading] = useState(true);
@@ -28,6 +28,8 @@ const App = () => {
       setLoading(false);
     }, 2500);
     dispatch(setAdminLoginState(sessionStorage.getItem("token")));
+    dispatch((setUserData(JSON.parse(sessionStorage.getItem("userData")))))
+    dispatch(serUserType(sessionStorage.getItem("userType")))
   }, []);
   return (
     <React.Fragment>

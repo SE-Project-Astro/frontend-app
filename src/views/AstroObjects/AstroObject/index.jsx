@@ -15,6 +15,7 @@ import { timeDifference } from "../../../helper/helper";
 
 const AstroObject = ({ match }) => {
   const history = useHistory();
+  const userType = useSelector(state => state.users.userType)
   const handleUpdate = useCallback(
     (id) => history.replace(`/astroUpdate/${id}`),
     [history]
@@ -52,14 +53,14 @@ const AstroObject = ({ match }) => {
             <div style={({ backgroundColor: "white" }, { color: "white" })}>
               {htmlToReact(astroObject.description)}
             </div>
-            <div className="my-3 text-right">
+            {userType === "admin" ? <div className="my-3 text-right">
               <Button
-                onClick={() => handleUpdate(astroObject.id)}
-                color="info"
+                  onClick={() => handleUpdate(astroObject.id)}
+                  color="info"
               >
                 Update
               </Button>
-            </div>
+            </div> : null}
             <div className="mt-5">
               <h3>{` ${2} Comments`}</h3>
               <form>

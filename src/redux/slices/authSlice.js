@@ -4,9 +4,10 @@ import {setAuthToken, unSetAuthToken} from "../api/client";
 
 const initialState = {
     accessToken: sessionStorage.getItem("token"),
-    userData: null,
+    userData: JSON.parse(sessionStorage.getItem("userData")),
     isAdminLogin: false,
     isRegUserLogin: false,
+    userType: sessionStorage.getItem("userType"),
 }
 
 const authSlice = createSlice({
@@ -30,12 +31,20 @@ const authSlice = createSlice({
         },
         setUserData(state, action) {
             state.userData = action.payload
+            sessionStorage.setItem("userData", JSON.stringify(action.payload))
+        },
+        serUserType(state, action) {
+          state.userType = action.payload
+          sessionStorage.setItem("userType", action.payload)
         },
         unSetAccessToken(state, action ) {
             unSetAuthToken();
             sessionStorage.removeItem("token")
+            state.userData = null
+            state.accessToken = null
             state.isAdminLogin =false
             state.isRegUserLogin = false
+            state.userType = ""
         }
     }
 });
@@ -51,6 +60,7 @@ const loginThunkFunction = (username, password) => {
             const response = await axios.post(`http://localhost:3000/auth/login`, userAuthData);
             dispatch(authSlice.actions.setAccessToken(response.data.token));
             dispatch(authSlice.actions.setUserData(response.data.user));
+            dispatch(authSlice.actions.serUserType(response.data.type))
             dispatch(authSlice.actions.setAdminLoginState());
             console.log(response.data);
             return response.data;
@@ -67,13 +77,13 @@ const registerThunkFunction = (email, password, firstname, lastname) => {
         "UserName": email,
         "pass": password,
         "type": "regular",
-        "fName": firstname,
-        "lName": lastname,
+        "fname": firstname,
+        "lname": lastname
     }
-
+    console.log(userData)
     return async (dispatch, getState) => {
         try {
-            const response = await axios.post(`/auth/signup`, userData)
+            const response = await axios.post(`http://localhost:3000/auth/signup`, userData)
             console.log(response.data)
             return response.data
         }
@@ -83,10 +93,14 @@ const registerThunkFunction = (email, password, firstname, lastname) => {
     }
 }
 
-const passwordResetThunkFunction = (username, currentPassword, newPassword) => {
+const passwordResetThunkFunction = (currentPassword, newPassword) => {
+    const userData = {
+        "currpassword": currentPassword,
+        "newpassword": newPassword
+    }
     return async (dispatch, getState) => {
         try {
-            const response = await axios.post(`localhost:3000/api/changepass?username=${username}&currpassword=${currentPassword}&newpassword=${newPassword}`)
+            const response = await axios.post(`/api/changepass`, userData)
             console.log(response.data)
             return response.data
         }
@@ -99,7 +113,8 @@ const passwordResetThunkFunction = (username, currentPassword, newPassword) => {
 const logoutThunkFunction = () => {
     return async (dispatch, getState) => {
         try {
-            const response = await axios.delete(`localhost:3000/api/logout`)
+            const response = await axios.delete(`/api/logout`)
+            dispatch(authSlice.actions.unSetAccessToken())
             console.log(response.data)
             return response.data
         }
@@ -109,7 +124,7 @@ const logoutThunkFunction = () => {
     }
 }
 
-export const {setUserData, setAccessToken, setAdminLoginState, setRegUserLoginState, unSetAccessToken} = authSlice.actions
+export const {setUserData, setAccessToken, setAdminLoginState, setRegUserLoginState, unSetAccessToken, serUserType} = authSlice.actions
 
 export {loginThunkFunction,registerThunkFunction, passwordResetThunkFunction, logoutThunkFunction}
 

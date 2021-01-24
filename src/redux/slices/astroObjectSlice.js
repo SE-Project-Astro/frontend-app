@@ -17,6 +17,9 @@ const astroObjectSlice = createSlice({
                 state.astroObjects.push(...action.payload)
             }
         },
+        setNull(state, action) {
+          state.astroObjects = []
+        },
         astroObjectUpdated(state, action) {
             const {id, image, desc} = action.payload;
             const existingObject = state.astroObjects.find(astroObject => astroObject.id === id);
@@ -51,11 +54,34 @@ const fetchAstroObjects = () => {
 
     }
 };
+
+const fetchAstroObjectById = (id) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch(astroObjectSlice.actions.setLoadingStatus())
+            const response = await axios.get(`/api/getAstrObj?id=${id}`)
+            dispatch(astroObjectAdded(response.data))
+            dispatch(astroObjectSlice.actions.setResultStatus(true))
+        } catch (e) {
+            dispatch(astroObjectSlice.actions.setResultStatus(false))
+        }
+
+
+    }
+}
+
 const addNewAstroObject = (name, image, cardText, content) => {
+    const astroObjectData = {
+        "Tag": name,
+        "Image": image,
+        "CardText": "cardText",
+        "Desc": content
+    }
     return async (dispatch, getState) => {
         try {
             dispatch(astroObjectSlice.actions.setLoadingStatus());
-            const response = await axios.post(`/api/AddAstrObj?tag=${name}&image=${image}&desc=${content}`)
+            dispatch(astroObjectSlice.actions.setNull())
+            const response = await axios.post(`/api/AddAstrObj`, astroObjectData)
             dispatch(astroObjectSlice.actions.setResultStatus(true))
             dispatch(fetchAstroObjects())
             return response.data;
@@ -66,11 +92,18 @@ const addNewAstroObject = (name, image, cardText, content) => {
     }
 }
 
-const updateAstroObject = (name, image, content) => {
+const updateAstroObject = (id, image, content) => {
+    const astroObjectData = {
+        "ID" : id,
+        "Image" : image,
+        "CardText": "",
+        "Desc" : content,
+        "tStamp": ""
+    }
     return async (dispatch, getState) => {
         try {
             dispatch(astroObjectSlice.actions.setLoadingStatus());
-            const response = await axios.post(`/api/EditAstrObj?tag=${name}&desc=${content}&image=${image}`)
+            const response = await axios.put(`/api/EditAstrObj`, astroObjectData)
             dispatch(astroObjectSlice.actions.setResultStatus(true))
             dispatch(fetchAstroObjects())
             return response.data;

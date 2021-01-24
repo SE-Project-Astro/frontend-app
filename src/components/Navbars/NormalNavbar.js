@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {Link, Redirect} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 // reactstrap components
 import {
     Button,
@@ -19,6 +19,8 @@ import {
     Col,
     UncontrolledTooltip,
 } from "reactstrap";
+import {logoutThunkFunction} from "../../redux/slices/authSlice";
+import {useHistory} from "react-router-dom";
 
 export default function NormalNavbar() {
     const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -26,6 +28,8 @@ export default function NormalNavbar() {
     let isRegUserLogin = useSelector(state => state.users.isRegUserLogin)
     const [collapseOut, setCollapseOut] = React.useState("");
     const [color, setColor] = React.useState("navbar-transparent");
+    const dispatch = useDispatch();
+    const history = useHistory();
     React.useEffect(() => {
         window.addEventListener("scroll", changeColor);
         return function cleanup() {
@@ -55,6 +59,10 @@ export default function NormalNavbar() {
     const onCollapseExited = () => {
         setCollapseOut("");
     };
+    const logout = () => {
+        dispatch(logoutThunkFunction())
+        history.push('/login')
+    }
     // const scrollToDownload = () => {
     //   document
     //     .getElementById("download-section")
@@ -148,22 +156,14 @@ export default function NormalNavbar() {
                         }
                         <NavItem>
                             {isAdminLogin || isRegUserLogin ?
-                                <div>
-                                    <Button
-                                        className="nav-link d-none d-lg-block"
-                                        color="default"
-                                        to="/profile"
-                                        tag={Link}
-                                    >
-                                        <i className="tim-icons icon-single-02"/> Profile
-                                    </Button>
-                                    <Button
-                                        className="nav-link d-none d-lg-block"
-                                        color="primary"
-                                    >
-                                        <i className="tim-icons icon-single-02"/> Log out
-                                    </Button>
-                                </div>
+                                <Button
+                                    className="nav-link d-none d-lg-block"
+                                    color="default"
+                                    to="/profile"
+                                    tag={Link}
+                                >
+                                    <i className="tim-icons icon-single-02"/> Profile
+                                </Button>
                                 :
                                 <Button
                                     className="nav-link d-none d-lg-block"
@@ -173,6 +173,17 @@ export default function NormalNavbar() {
                                 >
                                     <i className="tim-icons icon-single-02"/> Sign in
                                 </Button>}
+                        </NavItem>
+                        <NavItem>
+                            {isAdminLogin || isRegUserLogin ?
+                                <Button
+                                    className="nav-link d-none d-lg-block"
+                                    color="default"
+                                    onClick={() => logout()}
+                                >
+                                    Log out
+                                </Button>
+                                : null}
                         </NavItem>
                     </Nav>
                 </Collapse>
