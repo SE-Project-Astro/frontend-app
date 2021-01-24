@@ -23,18 +23,19 @@ import {
   UncontrolledCarousel,
 } from "reactstrap";
 const carouselItems = [
+  
   {
-    src: require("assets/img/denys.jpg").default,
-    altText: "Slide 1",
-    caption: "",
-  },
-  {
-    src: require("assets/img/fabien-bazanegue.jpg").default,
+    src: require("assets/img/Landing/landing2.jpg").default,
     altText: "Slide 2",
     caption: "",
   },
   {
-    src: require("assets/img/mark-finn.jpg").default,
+    src: require("assets/img/Landing/landing3.jpg").default,
+    altText: "Slide 3",
+    caption: "",
+  },
+  {
+    src: require("assets/img/Landing/landing4.jpg").default,
     altText: "Slide 3",
     caption: "",
   },
@@ -192,37 +193,37 @@ export default function LandingPage() {
               <Container className="text-center">
                 <Row>
                   <Col sm="6">
-                    <Link to="landing-page">
+                    <Link to="reg">
                       <img
                         alt="..."
                         className="img-raised"
-                        src={require("assets/img/landing-page.png").default}
+                        src={require("assets/img/Landing/signup.jpeg").default}
                       />
                     </Link>
                     <Button
                       className="btn-simple btn-round"
                       color="primary"
-                      to="landing-page"
+                      to="reg"
                       tag={Link}
                     >
-                      View Landing Page
+                      View Signup Page
                     </Button>
                   </Col>
                   <Col sm="6">
-                    <Link to="profile-page">
+                    <Link to="login">
                       <img
                         alt="..."
                         className="img-raised"
-                        src={require("assets/img/profile-page.png").default}
+                        src={require("assets/img/Landing/login.jpeg").default}
                       />
                     </Link>
                     <Button
                       className="btn-simple btn-round"
                       color="primary"
-                      to="profile-page"
+                      to="login"
                       tag={Link}
                     >
-                      View Profile Page
+                      View Login Page
                     </Button>
                   </Col>
                 </Row>
