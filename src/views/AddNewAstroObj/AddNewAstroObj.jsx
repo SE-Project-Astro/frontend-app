@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TextEditor from "../../components/TextEditor/TextEditor";
-//import TextEditor from "../../components/TextEditor/RichTextEditor";
+//import TextEditor from "../../components/TextEditor/QuilEditor";
 import { useSelector } from "react-redux";
 
 // reactstrap components
