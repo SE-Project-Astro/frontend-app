@@ -22,29 +22,16 @@ export default function Footer() {
             <h1 className="title">GUIDE Astro</h1>
           </Col>
           <Col md="3">
-            <Nav>
-              
-              <NavItem>
-                <NavLink to="/landing" tag={Link}>
-                  Landing
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/profile-page" tag={Link}>
-                  FAQ
-                </NavLink>
-              </NavItem>
-            </Nav>
           </Col>
           <Col md="3">
             <Nav>
               <NavItem>
-                <NavLink >
+                <NavLink to="/contactus" tag={Link}>
                   Contact Us
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
+                <NavLink to="/about" tag={Link}>
                   About Us
                 </NavLink>
               </NavItem>

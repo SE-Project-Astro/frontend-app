@@ -20,6 +20,7 @@ import{
 }from "reactstrap";
 import {useDispatch} from "react-redux";
 import { loginThunkFunction } from "../../redux/slices/authSlice";
+import {useHistory} from "react-router-dom";
 
 
 export default function LoginPage(){
@@ -32,13 +33,14 @@ export default function LoginPage(){
     //mouse following square states  
     const [squares1to6, setSquares1to6] = React.useState("");
     const [squares7and8, setSquares7and8] = React.useState("");
-    
+    const history=useHistory();
 
     //for authendication purposes
     const dispatch = useDispatch();
     const submitHandler = (username,password) => {
         
         dispatch(loginThunkFunction(username, password))
+        history.push("/landing")
     }
 
     //functions for validation

@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import {Link, useLocation} from "react-router-dom";
-import TextEditor from "../../components/TextEditor/TextEditor";
+import TextEditor from "../../components/TextEditor/QuilEditor";
 //import TextEditor from "../../components/TextEditor/RichTextEditor";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -11,6 +11,7 @@ import {addNewNews} from "../../redux/slices/newsSlice";
 export default function AddNews({ match }) {
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
+  const [cardText, setCardText] = useState("");
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
   const { newsId } = match.params;
@@ -22,6 +23,7 @@ export default function AddNews({ match }) {
       setTitle(news.title);
       setImageUrl(news.image);
       setContent(news.description);
+      setCardText(news.cardText);
       //console.log(astroObject);
     }
   }, []);
@@ -40,9 +42,14 @@ export default function AddNews({ match }) {
     const title = e.target.value;
     setTitle(title);
   };
+  const handleCardTextChange = (e) => {
+    const cardText = e.target.value;
+    setCardText(cardText);
+  };
+
 
   const handleSubmit = () => {
-    dispatch(addNewNews(title, imageUrl, "", content))
+    dispatch(addNewNews(title, imageUrl, cardText, content))
   };
 
   const handleImageUrlChange = (e) => {
@@ -64,6 +71,17 @@ export default function AddNews({ match }) {
               value={title}
               placeholder="Enter the Title"
               onChange={(e) => handleTitleChange(e)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="cardText">Card Text</Label>
+            <Input
+                type="text"
+                name="cardText"
+                id="cardText"
+                value={cardText}
+                placeholder="Enter the Card Text"
+                onChange={(e) => handleCardTextChange(e)}
             />
           </FormGroup>
           <FormGroup>

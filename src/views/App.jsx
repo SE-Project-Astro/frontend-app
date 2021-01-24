@@ -14,6 +14,8 @@ import NewRegisterPage from "views/examples/NewRegisterPage"
 import News from "./NewsPage/News";
 import RingLoader from "react-spinners/RingLoader";
 import NewLandingPage from "views/examples/NewLandingPage";
+import ContactUs from "./examples/ContactUs";
+import About from "./examples/About"
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthToken } from "../redux/api/client";
 import { setAdminLoginState, setUserData, serUserType} from "redux/slices/authSlice";
@@ -53,6 +55,8 @@ const App = () => {
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={NewRegisterPage} />
               <Route path="/landing" component={NewLandingPage} />
+              <Route path="/contactus" component={ContactUs} />
+              <Route path="/about" component={About} />
               {(isAdminLogin || isRegUserLogin) && (
                 <Route path="/astro/:astroObjectId" component={AstroObject} />
               )}

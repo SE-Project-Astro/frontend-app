@@ -74,7 +74,7 @@ const addNewAstroObject = (name, image, cardText, content) => {
     const astroObjectData = {
         "Tag": name,
         "Image": image,
-        "CardText": "cardText",
+        "CardText": cardText,
         "Desc": content
     }
     return async (dispatch, getState) => {
@@ -92,17 +92,18 @@ const addNewAstroObject = (name, image, cardText, content) => {
     }
 }
 
-const updateAstroObject = (id, image, content) => {
+const updateAstroObject = (id, cardText, image, content) => {
     const astroObjectData = {
         "ID" : id,
         "Image" : image,
-        "CardText": "",
+        "CardText": cardText,
         "Desc" : content,
         "tStamp": ""
     }
     return async (dispatch, getState) => {
         try {
             dispatch(astroObjectSlice.actions.setLoadingStatus());
+            dispatch(astroObjectSlice.actions.setNull())
             const response = await axios.put(`/api/EditAstrObj`, astroObjectData)
             dispatch(astroObjectSlice.actions.setResultStatus(true))
             dispatch(fetchAstroObjects())

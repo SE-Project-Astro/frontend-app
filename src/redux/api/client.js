@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST_URL = "http://localhost:3000";
+const HOST_URL = "http://localhost:8080";
 axios.defaults.baseURL = HOST_URL;
 
 export const setAuthToken = token => {

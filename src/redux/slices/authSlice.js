@@ -57,7 +57,7 @@ const loginThunkFunction = (username, password) => {
     }
     return async (dispatch, getState) => {
         try {
-            const response = await axios.post(`http://localhost:3000/auth/login`, userAuthData);
+            const response = await axios.post(`http://localhost:8080/auth/login`, userAuthData);
             dispatch(authSlice.actions.setAccessToken(response.data.token));
             dispatch(authSlice.actions.setUserData(response.data.user));
             dispatch(authSlice.actions.serUserType(response.data.type))
@@ -83,7 +83,7 @@ const registerThunkFunction = (email, password, firstname, lastname) => {
     console.log(userData)
     return async (dispatch, getState) => {
         try {
-            const response = await axios.post(`http://localhost:3000/auth/signup`, userData)
+            const response = await axios.post(`http://localhost:8080/auth/signup`, userData)
             console.log(response.data)
             return response.data
         }

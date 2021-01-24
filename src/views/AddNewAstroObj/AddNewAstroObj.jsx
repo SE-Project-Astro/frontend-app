@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import {Link, useLocation} from "react-router-dom";
-import TextEditor from "../../components/TextEditor/TextEditor";
+import TextEditor from "../../components/TextEditor/QuilEditor";
 //import TextEditor from "../../components/TextEditor/RichTextEditor";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -12,6 +12,7 @@ export default function AddNewAstroObj({ match }) {
   const dispatch = useDispatch()
   const [imageUrl, setImageUrl] = useState("");
   const [objName, setObjName] = useState("");
+  const [cardText, setCardText] = useState("");
   const [content, setContent] = useState("");
   const [addOrUpdate, setValue] = useState("add")
 
@@ -27,6 +28,7 @@ export default function AddNewAstroObj({ match }) {
       setObjName(astroObject.name);
       setImageUrl(astroObject.image);
       setContent(astroObject.description);
+      setCardText(astroObject.cardText);
     }
   }, []);
 
@@ -39,6 +41,10 @@ export default function AddNewAstroObj({ match }) {
   const handleTextAreaChange = (newtextAreaValue) => {
     setContent(newtextAreaValue);
   };
+  const handleCardTextChange = (e) => {
+    const cardText = e.target.value;
+    setCardText(cardText);
+  };
 
   const handleObjNameChange = (e) => {
     const objName = e.target.value;
@@ -46,10 +52,10 @@ export default function AddNewAstroObj({ match }) {
   };
   const handleSubmit = (event) => {
     if(addOrUpdate === "add") {
-      dispatch(addNewAstroObject(objName, imageUrl, "", content))
+      dispatch(addNewAstroObject(objName, imageUrl, cardText, content))
     }
     else {
-      dispatch(updateAstroObject(parseInt(astroObjectId), imageUrl, content))
+      dispatch(updateAstroObject(parseInt(astroObjectId),cardText, imageUrl, content))
     }
   };
 
@@ -72,6 +78,17 @@ export default function AddNewAstroObj({ match }) {
               value={objName}
               placeholder="Enter the Object Name"
               onChange={(e) => handleObjNameChange(e)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="cardText">Card Text</Label>
+            <Input
+                type="text"
+                name="cardText"
+                id="cardText"
+                value={cardText}
+                placeholder="Enter the Card Text"
+                onChange={(e) => handleCardTextChange(e)}
             />
           </FormGroup>
           <FormGroup>
