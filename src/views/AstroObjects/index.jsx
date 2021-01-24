@@ -21,7 +21,6 @@ const Index = () => {
       dispatch(fetchAstroObjects())
     }
   }, [status, dispatch])
-
   return (
     <React.Fragment>
       <section className="section section-lg">
@@ -38,14 +37,14 @@ const Index = () => {
                   xs="12"
                   md="6"
                   xl="4"
-                  onClick={() => handleOnClick(astroObject.name)}
+                  onClick={() => handleOnClick(astroObject.id)}
                   key={astroObject.id}
                 >
                   <CardWithImage
                     image={astroObject.image}
-                    cardTitle={astroObject.description}
-                    cardText="This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-                    lastUpdatedText="Last updated 3 mins ago"
+                    cardTitle={astroObject.name}
+                    cardText={astroObject.cardText}
+                    lastUpdatedText={astroObject.timestamp}
                   />
                 </Col>
               ))}
@@ -58,3 +57,30 @@ const Index = () => {
 };
 
 export default Index;
+
+function timeDifference(date1, date2) {
+  var difference = date1.getTime() - date2.getTime();
+
+  var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
+  difference -= daysDifference * 1000 * 60 * 60 * 24;
+
+  var hoursDifference = Math.floor(difference / 1000 / 60 / 60);
+  difference -= hoursDifference * 1000 * 60 * 60;
+
+  var minutesDifference = Math.floor(difference / 1000 / 60);
+  difference -= minutesDifference * 1000 * 60;
+
+  var secondsDifference = Math.floor(difference / 1000);
+
+  console.log(
+    "difference = " +
+      daysDifference +
+      " day/s " +
+      hoursDifference +
+      " hour/s " +
+      minutesDifference +
+      " minute/s " +
+      secondsDifference +
+      " second/s "
+  );
+}

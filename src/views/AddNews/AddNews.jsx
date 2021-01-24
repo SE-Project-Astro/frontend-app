@@ -1,97 +1,129 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import JoditEditor from "jodit-react";
+import React, { Component, useState, useEffect } from "react";
+import {Link, useLocation} from "react-router-dom";
+import TextEditor from "../../components/TextEditor/TextEditor";
+//import TextEditor from "../../components/TextEditor/RichTextEditor";
+import { useSelector } from "react-redux";
+
 // reactstrap components
-import {
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Button,
-  Card,
-  CardBody,
-  Container,
-} from "reactstrap";
+import { FormGroup, Label, Input, Button, Container } from "reactstrap";
 
-const configJoditEditor = {
-  theme: "dark",
-  readonly: false, // all options from https://xdsoft.net/jodit/doc/
-};
+export default function AddNews({ match }) {
+  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
-class AddNews extends Component {
-  state = {
-    editor: null,
-    title: "",
-    content: "",
-  };
-
-  handleTextAreaChange = (newtextAreaValue) => {
-    const content = newtextAreaValue;
-    this.setState({ content });
-  };
-  handleTitleChange = (newTitle) => {
-    const title = newTitle.target.value;
-    this.setState({ title });
-  };
-  handleSubmit = () => {
-    console.log("content ", this.state.content);
-  };
-
-  isValidForm = () => {
-    if (
-      typeof this.state.title === "string" &&
-      this.state.title !== "" &&
-      typeof this.state.content === "string" &&
-      this.state.content !== "" &&
-      this.state.content !==
-        '<><span style="color: rgb(0, 0, 0);">&nbsp;</span><br></>'
-    ) {
-      return true;
-    } else {
-      return false;
+  const { newsId } = match.params;
+  const news = useSelector((state) =>
+    state.news.news.find((newsItem) => newsItem.news_id === parseInt(newsId))
+  );
+  useEffect(() => {
+    if (news) {
+      setTitle(news.title);
+      setImageUrl(news.image);
+      setContent(news.description);
+      //console.log(astroObject);
     }
+  }, []);
+
+  useEffect(() => {
+    if(newsId) {
+      console.log(newsId);
+    }
+  }, [])
+
+  const handleTextAreaChange = (newtextAreaValue) => {
+    setContent(newtextAreaValue);
   };
 
-  render() {
-    return (
-      <div className="section section-examples" data-background-color="black">
-        <div className="space-50" />
-        <Container className="">
-          <form>
-            <FormGroup>
-              <Label for="newsTitle">Title</Label>
-              <Input
-                type="text"
-                name="newsTitle"
-                value={this.state.title}
-                id="newsTitle"
-                placeholder="Enter News Title"
-                onChange={this.handleTitleChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Content</Label>
-              <JoditEditor
-                className="text-dark bg-dark"
-                ref={this.state.editor}
-                config={configJoditEditor}
-                value={this.state.content}
-                tabIndex={2} // tabIndex of textarea
-                onChange={this.handleTextAreaChange}
-              />
-            </FormGroup>
-            <Button
-              onClick={this.handleSubmit}
-              color="primary"
-              disabled={!this.isValidForm()}
-            >
-              Submit
-            </Button>
-          </form>
-        </Container>
-      </div>
-    );
+  const handleTitleChange = (e) => {
+    const title = e.target.value;
+    setTitle(title);
+  };
+
+  const handleSubmit = () => {
+    console.log("content ", content);
+  };
+
+  const handleImageUrlChange = (e) => {
+    const imageUrl = e.target.value;
+    setImageUrl(imageUrl);
+  };
+
+  return (
+    <div className="section section-examples" data-background-color="black">
+      <div className="space-50" />
+      <Container className="">
+        <form>
+          <FormGroup>
+            <Label for="objName">Title</Label>
+            <Input
+              type="text"
+              name="title"
+              id="title"
+              value={title}
+              placeholder="Enter the Title"
+              onChange={(e) => handleTitleChange(e)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="images">Images</Label>
+
+            <Input
+              id="images"
+              type="url"
+              name="images"
+              value={imageUrl}
+              placeholder="Enter image url"
+              onChange={(e) => handleImageUrlChange(e)}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label>Content</Label>
+
+            <TextEditor
+              value={content}
+              onChange={(e) => handleTextAreaChange(e)}
+            />
+          </FormGroup>
+          <Button
+            tag={Link}
+            to="/"
+            onClick={() => handleSubmit()}
+            color="primary"
+            disabled={!isValidForm(title, imageUrl, content)}
+          >
+            Submit
+          </Button>
+        </form>
+      </Container>
+    </div>
+  );
+}
+
+function isValidForm(title, imageUrl, content) {
+  if (
+    typeof title === "string" &&
+    title !== "" &&
+    typeof content === "string" &&
+    content !== "" &&
+    isImageUrl(imageUrl)
+  ) {
+    return true;
+  } else {
+    return false;
   }
 }
 
-export default AddNews;
+function isImageUrl(url) {
+  var pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return !!pattern.test(url) && url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+}
