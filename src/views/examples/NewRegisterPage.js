@@ -109,6 +109,11 @@ export default function RegisterPage() {
       if(validate()){
         console.log(stateInput);
         let input = {};
+        let Email= stateInput.input.Email;
+        let Password=stateInput.input.Password;
+        let First= stateInput.input.First;
+        let Last=stateInput.input.Last;
+
         input["First"] ="";
         input["Last"] ="";
         input["Email"] ="";
@@ -118,7 +123,7 @@ export default function RegisterPage() {
         setStateInput({
           input:input
         });   
-        alert('Demo Form is submited');   
+        submitHandler(Email,Password,First,Last);  
       }
   }
 
