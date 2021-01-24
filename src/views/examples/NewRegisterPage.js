@@ -179,7 +179,7 @@ export default function RegisterPage() {
                         alt="..."
                         src={require("assets/img/square-purple-1.png").default}
                       />
-                      <CardTitle tag="h4">sign IN</CardTitle>
+                      <CardTitle tag="h4">sign UP</CardTitle>
                     </CardHeader>
                     <CardBody>
                       <Form className="form" onSubmit={(e)=>handleSubmit(e)}>
@@ -269,19 +269,7 @@ export default function RegisterPage() {
                           />
                         </InputGroup>
                             <div>{stateError.error.Password}</div>
-                        <FormGroup check className="text-left">
-                          <Label check>
-                            <Input type="checkbox" />
-                            <span className="form-check-sign" />I agree to the{" "}
-                            <a
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              terms and conditions
-                            </a>
-                            .
-                          </Label>
-                        </FormGroup>
+                        
                         <br/>
                         <Button type="submit" className="btn-round" color="primary" size="lg">
                             Register
