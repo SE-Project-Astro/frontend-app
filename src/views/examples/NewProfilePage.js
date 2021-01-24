@@ -27,18 +27,50 @@ export default function NewProfilePage(){
     const [tabs, setTabs] = React.useState(1);
     const [stateChange, setStateChange] = React.useState(true);
 
+    //states for validation purposes
+    const [currentPass, setCurrentPass] = React.useState("");
+    const [newPass, setNewPass] = React.useState("");
+    const [newPassRE,setNewPassRE]= React.useState("");
+
+    const[currentPassError,setCurrentPassError]= React.useState("");
+    const[newPassError,setNewPassError]= React.useState("");
+
     const handleChange = (event)=>{
-        
         setStateChange(false);
+    };
+
+    const submitHandler=(event)=>{
+      let isValidCurrentPass  = true;
+      let isValidNewPass  = true;
+      event.preventDefault();
+        if (!currentPass){
+          setCurrentPassError("enter your old password");
+          isValidCurrentPass=false;
+        }
+        if ((!newPass)||(!newPassRE)){
+          setNewPassError("Enter new password");
+          isValidNewPass  =false
+        }
+        if (!(newPass===newPassRE)){
+          setNewPassError("New password don't match");
+          isValidNewPass  =false;
+        }
+        if (isValidNewPass){
+          setNewPassError("");
+        }
+        if (isValidCurrentPass){
+          setCurrentPassError("");
+        }
     };
 
    
 
     return(
         <>
-            <div className="wrapper">
-            <br/>
-            <br/>
+          <div className="wrapper">
+            <div className="page-header">
+            <div className="content">
+            
             <Row className="justify-content-md-center">
             <Col className="text-center" lg="8" md="12">
                 <Card className="card-coin card-plain">
@@ -46,7 +78,7 @@ export default function NewProfilePage(){
                     <img
                       alt="..."
                       className="img-center img-fluid rounded-circle"
-                      src={require("assets/img/mike.jpg").default}
+                      src={require("assets/img/Profile/pro1.png").default}
                     />
                     <h4 className="title">My Profile</h4>
                   </CardHeader>
@@ -103,19 +135,19 @@ export default function NewProfilePage(){
                       activeTab={"tab" + tabs}
                     >
                       <TabPane tabId="tab1">
-                          <Table className="tablesorter">
+                          <Table >
                           <tbody>
                             <tr>
                                 <td>First Name</td>
-                                <td>First Name</td>
+                                <td>Tharinda</td>
                             </tr>
                             <tr>
                                 <td>Last Name</td>
-                                <td>Last Name</td>
+                                <td>Thamaranga</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>Email</td>
+                                <td>tharinda@gmail.com</td>
                             </tr>
 
                           </tbody>
@@ -172,16 +204,23 @@ export default function NewProfilePage(){
 
 
                       <TabPane tabId="tab3">
+                      <Form onSubmit={event => submitHandler(event)}>
                         <Row>
                           <Label sm="3">Current Password</Label>
                           <Col sm="9">
+                          
                             <FormGroup>
                               <Input
                                 placeholder="Current Password"
                                 type="Password"
+                                value={currentPass}
+                                onChange={event => setCurrentPass(event.target.value)} 
                               />
                               
                             </FormGroup>
+                            <FormText color="default" tag="span">
+                                {currentPassError}
+                              </FormText>
                           </Col>
                         </Row>
                         <Row>
@@ -190,6 +229,8 @@ export default function NewProfilePage(){
                             <FormGroup>
                               <Input placeholder="New Password"
                               type="Password" 
+                              value={newPass}
+                              onChange={event => setNewPass(event.target.value)} 
                               />
                             </FormGroup>
                           </Col>
@@ -200,13 +241,24 @@ export default function NewProfilePage(){
                             <FormGroup>
                               <Input placeholder="Re-Enter New Password"
                               type="Password" 
+                              value={newPassRE}
+                              onChange={event => setNewPassRE(event.target.value)} 
                               />
                               <FormText color="default" tag="span">
-                                Please enter a valid address.
+                                {newPassError}
                               </FormText>
                             </FormGroup>
+                            <Button
+                          className="btn-simple btn-icon btn-round float-right"
+                          color="primary"
+                          type="submit"
+                          
+                        >
+                          <i className="tim-icons icon-send" />
+                        </Button>
                           </Col>
                         </Row>
+                      </Form>
                       </TabPane>
                     </TabContent>
                   </CardBody>
@@ -214,6 +266,8 @@ export default function NewProfilePage(){
             </Col>
             </Row>
             </div>
+            </div>
+          </div>
 
 
         </>

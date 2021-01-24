@@ -129,16 +129,6 @@ export default function NormalNavbar() {
                                         Lunar Calendar
                                     </NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <Button
-                                        className="nav-link d-none d-lg-block"
-                                        color="primary"
-                                        target="_blank"
-                                        href=""
-                                    >
-                                        <i className="tim-icons icon-spaceship"/> HOME
-                                    </Button>
-                                </NavItem>
                             </React.Fragment>
                             : null
                         }
@@ -149,21 +139,40 @@ export default function NormalNavbar() {
                                 <Button
                                     className="nav-link d-none d-lg-block"
                                     color="default"
-                                    href="/profile-page"
+                                    to="/register"
+                                    tag={Link}
                                 >
                                     <i className="tim-icons icon-single-02"/> Register
                                 </Button>
                             </NavItem>
                         }
                         <NavItem>
-                            <Button
-                                className="nav-link d-none d-lg-block"
-                                color="default"
-                                to="/login"
-                                tag={Link}
-                            >
-                                <i className="tim-icons icon-single-02"/> {isAdminLogin || isRegUserLogin ? "Profile" : "Sign in"}
-                            </Button>
+                            {isAdminLogin || isRegUserLogin ?
+                                <div>
+                                    <Button
+                                        className="nav-link d-none d-lg-block"
+                                        color="default"
+                                        to="/profile"
+                                        tag={Link}
+                                    >
+                                        <i className="tim-icons icon-single-02"/> Profile
+                                    </Button>
+                                    <Button
+                                        className="nav-link d-none d-lg-block"
+                                        color="primary"
+                                    >
+                                        <i className="tim-icons icon-single-02"/> Log out
+                                    </Button>
+                                </div>
+                                :
+                                <Button
+                                    className="nav-link d-none d-lg-block"
+                                    color="default"
+                                    to="/login"
+                                    tag={Link}
+                                >
+                                    <i className="tim-icons icon-single-02"/> Sign in
+                                </Button>}
                         </NavItem>
                     </Nav>
                 </Collapse>

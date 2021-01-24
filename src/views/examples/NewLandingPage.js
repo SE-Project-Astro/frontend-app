@@ -23,18 +23,19 @@ import {
   UncontrolledCarousel,
 } from "reactstrap";
 const carouselItems = [
+  
   {
-    src: require("assets/img/denys.jpg").default,
-    altText: "Slide 1",
-    caption: "",
-  },
-  {
-    src: require("assets/img/fabien-bazanegue.jpg").default,
+    src: require("assets/img/Landing/landing2.jpg").default,
     altText: "Slide 2",
     caption: "",
   },
   {
-    src: require("assets/img/mark-finn.jpg").default,
+    src: require("assets/img/Landing/landing3.jpg").default,
+    altText: "Slide 3",
+    caption: "",
+  },
+  {
+    src: require("assets/img/Landing/landing4.jpg").default,
     altText: "Slide 3",
     caption: "",
   },
@@ -90,17 +91,24 @@ export default function LandingPage() {
             <div className="section">
               <Container>
                 <div className="title">
-                  <h3>Carousel</h3>
+                  <h3>A Guide to Astronomy</h3>
+                  <br/>
+                  <br/><br/>
                 </div>
                 <Row className="justify-content-between align-items-center">
                   <Col className="mb-5 mb-lg-0" lg="5">
                     <h1 className="text-white font-weight-light">
-                      Bootstrap carousel
+                      Are you an enthusiastic person to learn Astronomy?
                     </h1>
                     <p className="text-white mt-4">
-                      Black Design comes with three pre-built pages to help you get
-                      started faster. You can change the text and images and you're
-                      good to go.
+                      Astronomy can be a fascinating and rewarding pastime,
+                       whether you have a substantial telescope and accessories such as a CCD camera,
+                        or are a beginner observing with the naked eye. It is one of the few sciences
+                         where amateurs make genuine contributions to research, but many observers simply do it 
+                         for the excitement of seeing with their own eyes the planets, star clusters, nebulae and
+                          so on that are familiar from books. Observing directly by eye with an amateur telescope,
+                           it is not possible to see most astronomical objects with the amount of detail and colour
+                            captured in the images recorded by large professional instruments.
                     </p>
               
                   </Col>
@@ -108,7 +116,7 @@ export default function LandingPage() {
                     <UncontrolledCarousel
                       items={carouselItems}
                       indicators={false}
-                      autoPlay={false}
+                      autoPlay={true}
                     />
                   </Col>
                 </Row>
@@ -124,19 +132,19 @@ export default function LandingPage() {
                   <Container>
                     <Row className="justify-content-center">
                       <Col lg="12">
-                        <h1 className="text-center">Your best benefit</h1>
+                        <h1 className="text-center">Benifits of using GUIDE Astro</h1>
                         <Row className="row-grid justify-content-center">
                           <Col lg="3">
                             <div className="info">
                               <div className="icon icon-primary">
                                 <i className="tim-icons icon-money-coins" />
                               </div>
-                              <h4 className="info-title">Low Commission</h4>
+                              <h4 className="info-title">Can save money</h4>
                               <hr className="line-primary" />
                               <p>
-                                Divide details about your work into parts. Write a few
-                                lines about each one. A paragraph describing a feature
-                                will.
+                                Most astronomical equipments are very expensive. But its very hard to see astronomical
+                                objects through it. some times you have to rent those instruments for days.If you use this Guide
+                                you can get updated about astronomical events in advance and you can be ready for it.
                               </p>
                             </div>
                           </Col>
@@ -145,12 +153,12 @@ export default function LandingPage() {
                               <div className="icon icon-warning">
                                 <i className="tim-icons icon-chart-pie-36" />
                               </div>
-                              <h4 className="info-title">High Incomes</h4>
+                              <h4 className="info-title">Time Saving</h4>
                               <hr className="line-warning" />
                               <p>
-                                Divide details about your product or agency work into
-                                parts. Write a few lines about each one. A paragraph
-                                describing feature will be a feature.
+                                To see a little astronomical object, sometimes you have to wait an hours, sometimes a full day 
+                                to see it. but in this real time updating application you can be updated about any atronomical 
+                                object and you don't have to look sky all the time. 
                               </p>
                             </div>
                           </Col>
@@ -159,12 +167,11 @@ export default function LandingPage() {
                               <div className="icon icon-success">
                                 <i className="tim-icons icon-single-02" />
                               </div>
-                              <h4 className="info-title">Verified People</h4>
+                              <h4 className="info-title">Community</h4>
                               <hr className="line-success" />
                               <p>
-                                Divide details about your product or agency work into
-                                parts. Write a few lines about each one. A paragraph
-                                describing be enough.
+                                you can share your knowledge with others usung the comment section in the news forum and
+                                get to know each other.
                               </p>
                             </div>
                           </Col>
@@ -186,37 +193,37 @@ export default function LandingPage() {
               <Container className="text-center">
                 <Row>
                   <Col sm="6">
-                    <Link to="landing-page">
+                    <Link to="reg">
                       <img
                         alt="..."
                         className="img-raised"
-                        src={require("assets/img/landing-page.png").default}
+                        src={require("assets/img/Landing/signup.jpeg").default}
                       />
                     </Link>
                     <Button
                       className="btn-simple btn-round"
                       color="primary"
-                      to="landing-page"
+                      to="reg"
                       tag={Link}
                     >
-                      View Landing Page
+                      View Signup Page
                     </Button>
                   </Col>
                   <Col sm="6">
-                    <Link to="profile-page">
+                    <Link to="login">
                       <img
                         alt="..."
                         className="img-raised"
-                        src={require("assets/img/profile-page.png").default}
+                        src={require("assets/img/Landing/login.jpeg").default}
                       />
                     </Link>
                     <Button
                       className="btn-simple btn-round"
                       color="primary"
-                      to="profile-page"
+                      to="login"
                       tag={Link}
                     >
-                      View Profile Page
+                      View Login Page
                     </Button>
                   </Col>
                 </Row>

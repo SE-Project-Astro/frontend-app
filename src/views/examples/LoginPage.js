@@ -15,8 +15,12 @@ import{
     InputGroupAddon,
     InputGroupText,
     Input,
+    
 
 }from "reactstrap";
+import {useDispatch} from "react-redux";
+import { loginThunkFunction } from "../../redux/slices/authSlice";
+
 
 export default function LoginPage(){
     //form focusing states
@@ -25,6 +29,17 @@ export default function LoginPage(){
     //status for validation purposes
     const[stateInput,setStateInput]=React.useState({input: {}});
     const[stateError,setStateError]=React.useState({error: {}});
+    //mouse following square states  
+    const [squares1to6, setSquares1to6] = React.useState("");
+    const [squares7and8, setSquares7and8] = React.useState("");
+    
+
+    //for authendication purposes
+    const dispatch = useDispatch();
+    const submitHandler = (username,password) => {
+        
+        dispatch(loginThunkFunction(username, password))
+    }
 
     //functions for validation
     const handleChange = (event)=>{
@@ -39,15 +54,18 @@ export default function LoginPage(){
     const handleSubmit =(event)=> {
         event.preventDefault();
         if(validate()){
-            console.log(stateInput);
+            
             let input = {};
+            let Email= stateInput.input.Email;
+            let Password=stateInput.input.Password;
             input["Email"]="";
             input["Password"]="";
 
             setStateInput({
                 input: input
             });
-            alert('login Successfull');
+            
+            submitHandler(Email,Password);
         }
     };
 
@@ -82,6 +100,35 @@ export default function LoginPage(){
         return isValid;
     }
 
+    //mouse following square effects on the page
+    React.useEffect(() => {
+        document.body.classList.toggle("register-page");
+        document.documentElement.addEventListener("mousemove", followCursor);
+        // Specify how to clean up after this effect:
+        return function cleanup() {
+        document.body.classList.toggle("register-page");
+        document.documentElement.removeEventListener("mousemove", followCursor);
+        };
+    },[]);
+
+    const followCursor = (event) => {
+        let posX = event.clientX - window.innerWidth / 2;
+        let posY = event.clientY - window.innerWidth / 6;
+        setSquares1to6(
+        "perspective(500px) rotateY(" +
+            posX * 0.05 +
+            "deg) rotateX(" +
+            posY * -0.05 +
+            "deg)"
+        );
+        setSquares7and8(
+        "perspective(500px) rotateY(" +
+            posX * 0.02 +
+            "deg) rotateX(" +
+            posY * -0.02 +
+            "deg)"
+        );
+    };
 
 
 
@@ -99,7 +146,7 @@ export default function LoginPage(){
                                     <CardHeader>
                                        <CardImg
                                             alt="..."
-                                            src={require("assets/img/square1.png").default}
+                                            src={require("assets/img/square-purple-1.png").default}
                                         />
                                         <CardTitle tag="h4">Log IN</CardTitle>
                                     </CardHeader>
@@ -156,6 +203,45 @@ export default function LoginPage(){
                                </Card>
                             </Col>
                         </Row>
+                        <div className="register-bg" 
+                        />
+                            <div
+                                className="square square-1"
+                                id="square1"
+                                style={{ transform: squares1to6 }}
+                                
+                            />
+                            <div
+                                className="square square-2"
+                                id="square2"
+                                style={{ transform: squares1to6 }}
+                                
+                            />
+                            
+                            <div
+                                className="square square-3"
+                                id="square3"
+                                style={{ transform: squares1to6 }}
+                                
+                            />
+                            <div
+                                className="square square-4"
+                                id="square4"
+                                style={{ transform: squares1to6 }}
+                                
+                            />
+                            <div
+                                className="square square-5"
+                                id="square5"
+                                style={{ transform: squares1to6 }}
+                                
+                            />
+                            <div
+                                className="square square-6"
+                                id="square6"
+                                style={{ transform: squares1to6 }}
+                                
+                            />
                     </Container> 
                 </div>
             </div>

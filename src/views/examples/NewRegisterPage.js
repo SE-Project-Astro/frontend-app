@@ -25,6 +25,8 @@ import {
 // core components
 import RegNavbar from "components/Navbars/RegNavbar.js";
 import Footer from "components/Footer/Footer.js";
+import {useDispatch} from "react-redux";
+import { registerThunkFunction } from "../../redux/slices/authSlice";
 
 export default function RegisterPage() {
   //mouse following square states  
@@ -84,6 +86,14 @@ export default function RegisterPage() {
       
   }
 
+
+  //for authendication purposes
+    const dispatch = useDispatch();
+    const submitHandler = (email,password,firstName,lastName) => {
+        
+        dispatch(registerThunkFunction(email, password,firstName,lastName))
+    }
+
   const handleChange = (event) => {
       let input =stateInput.input;
       input[event.target.name]=event.target.value;
@@ -99,15 +109,21 @@ export default function RegisterPage() {
       if(validate()){
         console.log(stateInput);
         let input = {};
+        let Email= stateInput.input.Email;
+        let Password=stateInput.input.Password;
+        let First= stateInput.input.First;
+        let Last=stateInput.input.Last;
+
         input["First"] ="";
         input["Last"] ="";
         input["Email"] ="";
         input["Password"]="";
 
+
         setStateInput({
           input:input
         });   
-        alert('Demo Form is submited');   
+        submitHandler(Email,Password,First,Last);  
       }
   }
 
@@ -148,7 +164,7 @@ export default function RegisterPage() {
       
     <>
       
-      <RegNavbar />
+      
       <div className="wrapper">
         <div className="page-header">
           <div className="page-header-image" />
@@ -156,23 +172,14 @@ export default function RegisterPage() {
             <Container>
               <Row>
                 <Col className="offset-lg-0 offset-md-3" lg="5" md="6">
-                  <div
-                    className="square square-7"
-                    id="square7"
-                    style={{ transform: squares7and8 }}
-                  />
-                  <div
-                    className="square square-8"
-                    id="square8"
-                    style={{ transform: squares7and8 }}
-                  />
+                  
                   <Card className="card-register">
                     <CardHeader>
                       <CardImg
                         alt="..."
                         src={require("assets/img/square-purple-1.png").default}
                       />
-                      <CardTitle tag="h4">sign IN</CardTitle>
+                      <CardTitle tag="h4">sign UP</CardTitle>
                     </CardHeader>
                     <CardBody>
                       <Form className="form" onSubmit={(e)=>handleSubmit(e)}>
@@ -262,19 +269,7 @@ export default function RegisterPage() {
                           />
                         </InputGroup>
                             <div>{stateError.error.Password}</div>
-                        <FormGroup check className="text-left">
-                          <Label check>
-                            <Input type="checkbox" />
-                            <span className="form-check-sign" />I agree to the{" "}
-                            <a
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              terms and conditions
-                            </a>
-                            .
-                          </Label>
-                        </FormGroup>
+                        
                         <br/>
                         <Button type="submit" className="btn-round" color="primary" size="lg">
                             Register
@@ -322,7 +317,7 @@ export default function RegisterPage() {
             </Container>
           </div>
         </div>
-        <Footer />
+        
       </div>
     </>
   );

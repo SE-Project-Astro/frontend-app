@@ -8,7 +8,9 @@ import AstroObject from "./AstroObjects/AstroObject";
 import AddNewAstroObj from "./AddNewAstroObj/AddNewAstroObj";
 import AddNews from "./AddNews/AddNews";
 import NewsPage from "./NewsPage";
-import LoginPage from "views/LoginForm";
+import LoginPage from "views/examples/LoginPage";
+import NewProfilePage from "views/examples/NewProfilePage";
+import NewRegisterPage from "views/examples/NewRegisterPage"
 import News from "./NewsPage/News";
 import RingLoader from "react-spinners/RingLoader";
 import NewLandingPage from "views/examples/NewLandingPage";
@@ -47,6 +49,7 @@ const App = () => {
           <Fade>
             <Switch>
               <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={NewRegisterPage} />
               <Route path="/landing" component={NewLandingPage} />
               {(isAdminLogin || isRegUserLogin) && (
                 <Route path="/astro/:astroObjectId" component={AstroObject} />
@@ -80,8 +83,12 @@ const App = () => {
               {(isAdminLogin || isRegUserLogin) && (
                 <Route path="/lunarCalendar" component={lunarCalendar} />
               )}
+              {(isAdminLogin || isRegUserLogin) && (
+                  <Route path="/profile" component={NewProfilePage} />
+              )}
 
               <Redirect to="/landing" />
+
             </Switch>
           </Fade>
         </Layout>
