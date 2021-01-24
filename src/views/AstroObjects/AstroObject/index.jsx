@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router";
 import {
   Row,
@@ -10,7 +10,7 @@ import {
   Button,
 } from "reactstrap";
 import CardWithImage from "components/CardWithImage";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { timeDifference } from "../../../helper/helper";
 
 const AstroObject = ({ match }) => {

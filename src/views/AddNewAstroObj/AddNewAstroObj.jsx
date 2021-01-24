@@ -49,7 +49,7 @@ export default function AddNewAstroObj({ match }) {
       dispatch(addNewAstroObject(objName, imageUrl, "", content))
     }
     else {
-      dispatch(updateAstroObject(objName, imageUrl, content))
+      dispatch(updateAstroObject(parseInt(astroObjectId), imageUrl, content))
     }
   };
 

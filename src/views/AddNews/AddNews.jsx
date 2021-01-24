@@ -2,16 +2,17 @@ import React, { Component, useState, useEffect } from "react";
 import {Link, useLocation} from "react-router-dom";
 import TextEditor from "../../components/TextEditor/TextEditor";
 //import TextEditor from "../../components/TextEditor/RichTextEditor";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 // reactstrap components
 import { FormGroup, Label, Input, Button, Container } from "reactstrap";
+import {addNewNews} from "../../redux/slices/newsSlice";
 
 export default function AddNews({ match }) {
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const dispatch = useDispatch();
   const { newsId } = match.params;
   const news = useSelector((state) =>
     state.news.news.find((newsItem) => newsItem.news_id === parseInt(newsId))
@@ -41,7 +42,7 @@ export default function AddNews({ match }) {
   };
 
   const handleSubmit = () => {
-    console.log("content ", content);
+    dispatch(addNewNews(title, imageUrl, "", content))
   };
 
   const handleImageUrlChange = (e) => {

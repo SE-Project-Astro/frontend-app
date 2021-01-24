@@ -17,6 +17,9 @@ const newsSlice = createSlice({
         state.news.push(...action.payload);
       },
     },
+      unsetNewsList(state, action) {
+        state.news = [];
+      },
     newsUpdated(state, action) {
       const { id, image, desc } = action.payload;
       const existingObject = state.news.find((newsItem) => newsItem.id === id);
@@ -41,7 +44,7 @@ const fetchNews =  () => {
     {
         try {
             dispatch(newsSlice.actions.setLoadingStatus())
-            const response = await axios.get('/api/getNewsList?count=5')
+            const response = await axios.get('/api/getNewsList?count=100')
             console.log(response)
             dispatch(newsAdded(response.data))
             dispatch(newsSlice.actions.setResultStatus(true))
@@ -63,9 +66,10 @@ const addNewNews = (name, image, cardText, content) => {
     return async (dispatch, getState) => {
         try {
             dispatch(newsSlice.actions.setLoadingStatus());
+            dispatch(newsSlice.actions.unsetNewsList())
             const response = await axios.post(`/api/AddNews`, newsData)
             dispatch(newsSlice.actions.setResultStatus(true))
-            dispatch(fetchNews())
+            dispatch(fetchNews());
             return response.data;
         } catch (e) {
             dispatch(newsSlice.actions.setResultStatus(false))
@@ -78,7 +82,7 @@ export const { newsAdded, newsUpdated } = newsSlice.actions;
 
 export default newsSlice.reducer;
 
-export { fetchNews };
+export { fetchNews, addNewNews };
 
 export const selectAllNews = (state) => state.news.news;
 

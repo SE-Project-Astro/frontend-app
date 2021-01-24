@@ -67,6 +67,9 @@ export default function NewProfilePage(){
         }
         if (isValidCurrentPass && isValidNewPass) {
           dispatch(passwordResetThunkFunction(currentPass, newPassRE))
+          setCurrentPass("")
+          setNewPass("")
+          setNewPassRE("")
         }
     };
 
@@ -74,6 +77,8 @@ export default function NewProfilePage(){
 
     return(
         <>
+          <br/>
+          <br/>
           <div className="wrapper">
             <div className="page-header">
             <div className="content">
@@ -119,20 +124,6 @@ export default function NewProfilePage(){
                           }}
                           href="#pablo"
                         >
-                          Edit Profile
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames({
-                            active: tabs === 3,
-                          })}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setTabs(3);
-                          }}
-                          href="#pablo"
-                        >
                           Change Password
                         </NavLink>
                       </NavItem>
@@ -162,55 +153,10 @@ export default function NewProfilePage(){
 
                           </Table>
                       </TabPane>
+
+
+
                       <TabPane tabId="tab2">
-                        <Row>
-                          <Label sm="3">First Name</Label>
-                          <Col sm="9">
-                            <FormGroup>
-                              <Input
-                                placeholder={userData ? userData.fname : ""}
-                                type="text"
-                              />
-                              
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Label sm="3">Last Name</Label>
-                          <Col sm="9">
-                            <FormGroup>
-                              <Input placeholder={userData ? userData.lname : ""}
-                              type="text" 
-                              />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Label sm="3">Email</Label>
-                          <Col sm="9">
-                            <FormGroup>
-                              <Input placeholder={userData ? userData.UserName : ""}
-                              type="text" 
-                              onChange={(e) => handleChange(e)}
-                              />
-                              <FormText color="default" tag="span">
-                                Please enter a valid address.
-                              </FormText>
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Button
-                          className="btn-simple btn-icon btn-round float-right"
-                          color="primary"
-                          type="submit"
-                          disabled={stateChange}
-                        >
-                          <i className="tim-icons icon-send" />
-                        </Button>
-                      </TabPane>
-
-
-                      <TabPane tabId="tab3">
                       <Form onSubmit={event => submitHandler(event)}>
                         <Row>
                           <Label sm="3">Current Password</Label>

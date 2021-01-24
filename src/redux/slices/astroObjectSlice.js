@@ -118,7 +118,7 @@ export const {astroObjectAdded, astroObjectUpdated} = astroObjectSlice.actions;
 
 export default astroObjectSlice.reducer;
 
-export {fetchAstroObjects, addNewAstroObject, updateAstroObject}
+export {fetchAstroObjects, addNewAstroObject, updateAstroObject, fetchAstroObjectById}
 
 
 export const selectAllAstroObjects = (state) => state.astroObjects.astroObjects;

@@ -33,7 +33,7 @@ const NewsPage = () => {
     return (
         <section className="section section-lg">
             <section className="section">
-                {newsList.length > 3 && (
+                {newsList && newsList.length > 3 && (
                     <Container>
                         {userType === "admin" ? <Row className="mb-4">
                             <Button tag={Link} to="/newsAdd" color="info">
