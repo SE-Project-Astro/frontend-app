@@ -16,10 +16,11 @@ const astroObjectSlice = createSlice({
       reducer(state, action) {
         state.astroObjects.push(...action.payload);
       },
+    },
     astroObjectUpdated(state, action) {
-      const { tag, image, desc } = action.payload;
+      const { id, image, desc } = action.payload;
       const existingObject = state.astroObjects.find(
-        (astroObject) => astroObject.tag === tag
+        (astroObject) => astroObject.id === id
       );
       if (existingObject) {
         existingObject.desc = desc;
@@ -42,12 +43,29 @@ const fetchAstroObjects = () => {
     try {
       dispatch(astroObjectSlice.actions.setLoadingStatus());
       const response = await axios.get(
-        "/api/getAstrList?count=5&tbName=astronomical_object"
+        "/api/getAstrList?count=100&tbName=astronomical_object"
       );
       dispatch(astroObjectAdded(response.data));
       dispatch(astroObjectSlice.actions.setResultStatus(true));
     } catch (e) {
       dispatch(astroObjectSlice.actions.setResultStatus(false));
+    }
+  };
+};
+
+const addNewAstroObject = (name, image, cardText, content) => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(astroObjectSlice.actions.setLoadingStatus());
+      const response = await axios.post(
+        `/api/AddAstrObj?tag=${name}&image=${image}&desc=${content}`
+      );
+      dispatch(astroObjectSlice.actions.setResultStatus(true));
+      dispatch(fetchAstroObjects());
+      return response.data;
+    } catch (e) {
+      dispatch(astroObjectSlice.actions.setResultStatus(false));
+      return e.message;
     }
   };
 };
@@ -59,7 +77,7 @@ export const {
 
 export default astroObjectSlice.reducer;
 
-export { fetchAstroObjects };
+export { fetchAstroObjects, addNewAstroObject };
 
 export const selectAllAstroObjects = (state) => state.astroObjects.astroObjects;
 

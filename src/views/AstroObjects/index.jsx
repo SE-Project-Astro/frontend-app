@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllAstroObjects } from "redux/slices/astroObjectSlice";
 import { fetchAstroObjects } from "redux/slices/astroObjectSlice";
+import { timeDifference } from "../../helper/helper";
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,8 @@ const Index = () => {
     }
   }, []);
 
-  console.log(astroObjects[0].timestamp);
+  //console.log(timeDifference("2021-01-23T16:36:04.000Z"));
+
   return (
     <React.Fragment>
       <section className="section section-lg">
@@ -36,6 +38,8 @@ const Index = () => {
             <Row>
               {astroObjects.map((astroObject) => (
                 <Col
+                  // tag={Link}
+                  // to={`/astro/${astroObject.id}`}
                   xs="12"
                   md="6"
                   xl="4"
@@ -46,7 +50,7 @@ const Index = () => {
                     image={astroObject.image}
                     cardTitle={astroObject.name}
                     cardText={astroObject.cardText}
-                    lastUpdatedText={astroObject.timestamp}
+                    lastUpdatedText={timeDifference(astroObject.timestamp)}
                   />
                 </Col>
               ))}
@@ -59,30 +63,3 @@ const Index = () => {
 };
 
 export default Index;
-
-function timeDifference(date1, date2) {
-  var difference = date1.getTime() - date2.getTime();
-
-  var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
-  difference -= daysDifference * 1000 * 60 * 60 * 24;
-
-  var hoursDifference = Math.floor(difference / 1000 / 60 / 60);
-  difference -= hoursDifference * 1000 * 60 * 60;
-
-  var minutesDifference = Math.floor(difference / 1000 / 60);
-  difference -= minutesDifference * 1000 * 60;
-
-  var secondsDifference = Math.floor(difference / 1000);
-
-  console.log(
-    "difference = " +
-      daysDifference +
-      " day/s " +
-      hoursDifference +
-      " hour/s " +
-      minutesDifference +
-      " minute/s " +
-      secondsDifference +
-      " second/s "
-  );
-}

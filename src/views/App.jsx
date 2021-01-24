@@ -46,41 +46,43 @@ const App = () => {
         <Layout>
           <Fade>
             <Switch>
-              <Route
-                path="/login"
-                render={(props) => <LoginPage {...props} />}
-              />
-              <Route
-                path="/landing"
-                render={(props) => <NewLandingPage {...props} />}
-              />
-              {isAdminLogin || isRegUserLogin ? (
-                <React.Fragment>
-                  <Route path="/astro/:astroObjectId" component={AstroObject} />
-                  <Route
-                    path="/astro"
-                    render={(props) => <AstroObjects {...props} />}
-                  />
-                  <Route
-                    path="/astroUpdate/:astroObjectId"
-                    render={(props) => <AddNewAstroObj {...props} />}
-                  />
-                  <Route path="/astroAdd" component={AddNewAstroObj} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/landing" component={NewLandingPage} />
 
-                  <Route path="/news/:newsId" component={News} />
-                  <Route
-                    path="/news"
-                    render={(props) => <NewsPage {...props} />}
-                  />
-                  <Route
-                    path="/newsUpdate/:newsId"
-                    render={(props) => <AddNews {...props} />}
-                  />
-                  <Route path="/lunarCalendar" component={lunarCalendar} />
-                </React.Fragment>
-              ) : (
-                <Redirect to="/landing" />
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/astro/:astroObjectId" component={AstroObject} />
               )}
+
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/astro" component={AstroObjects} />
+              )}
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route
+                  path="/astroUpdate/:astroObjectId"
+                  component={AddNewAstroObj}
+                />
+              )}
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/astroAdd" component={AddNewAstroObj} />
+              )}
+
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/news/:newsId" component={News} />
+              )}
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/news" component={NewsPage} />
+              )}
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/newsUpdate/:newsId" component={AddNews} />
+              )}
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/newsAdd" component={AddNews} />
+              )}
+              {(isAdminLogin || isRegUserLogin) && (
+                <Route path="/lunarCalendar" component={lunarCalendar} />
+              )}
+
+              <Redirect to="/landing" />
             </Switch>
           </Fade>
         </Layout>

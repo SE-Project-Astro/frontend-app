@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import CardWithImage from "components/CardWithImage";
 import { useSelector } from "react-redux";
+import { timeDifference } from "../../../helper/helper";
 
 const AstroObject = ({ match }) => {
   const history = useHistory();
@@ -41,10 +42,13 @@ const AstroObject = ({ match }) => {
                 image={astroObject.image}
                 headingType="h2"
                 height="520px"
-                cardTitle={""}
+                cardTitle=""
+                cardText=""
+                lastUpdatedText={timeDifference(astroObject.timestamp)}
                 isInList={false}
               />
             </Row>
+
             <div style={({ backgroundColor: "white" }, { color: "white" })}>
               {htmlToReact(astroObject.description)}
             </div>
