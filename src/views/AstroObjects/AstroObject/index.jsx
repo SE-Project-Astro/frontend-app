@@ -61,50 +61,7 @@ const AstroObject = ({ match }) => {
                 Update
               </Button>
             </div> : null}
-            <div className="mt-5">
-              <h3>{` ${2} Comments`}</h3>
-              <form>
-                <FormGroup>
-                  <Label style={{ color: "white" }} for="userComment">
-                    User Name
-                  </Label>
-                  <Input
-                    type="textarea"
-                    name="text"
-                    id="userComment"
-                    placeholder="Add a public comment..."
-                  />
-                </FormGroup>
-                <div className="text-right">
-                  <Button color="secondary">Cancel</Button>
-                  <Button color="primary" type="submit">
-                    Comment
-                  </Button>
-                </div>
-              </form>
-              <div>
-                <Row className="mt-3">
-                  <strong style={{ color: "white" }}>User name 1</strong>
-                  <div className="ml-2">1 month ago</div>
-                </Row>
-                <Row>
-                  <p className="mt-2 ml-4">
-                    The HTML element defines text with strong importance. The
-                    content inside is typically displayed in bold.
-                  </p>
-                </Row>
-                <Row className="mt-3">
-                  <strong style={{ color: "white" }}>User name 2</strong>
-                  <div className="ml-2">1 month ago</div>
-                </Row>
-                <Row>
-                  <p className="mt-2 ml-4">
-                    The HTML element defines text with strong importance. The
-                    content inside is typically displayed in bold.
-                  </p>
-                </Row>
-              </div>
-            </div>
+
           </Container>
         </section>
       </section>
