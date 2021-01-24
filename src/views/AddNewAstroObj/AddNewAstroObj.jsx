@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useState, useRef } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TextEditor from "../../components/TextEditor/TextEditor";
 //import TextEditor from "../../components/TextEditor/RichTextEditor";
@@ -7,168 +7,126 @@ import { useSelector } from "react-redux";
 // reactstrap components
 import { FormGroup, Label, Input, Button, Container } from "reactstrap";
 
-const configJoditEditor = {
-  theme: "dark",
-  readonly: false, // all options from https://xdsoft.net/jodit/doc/
-};
-class AddNewAstroObj extends Component {
-  state = {
-    //images: [],
-    imageUrl: "",
-    objName: "",
-    content: "",
+export default function AddNewAstroObj({ match }) {
+  /**/
+
+  const [imageUrl, setImageUrl] = useState("");
+  const [objName, setObjName] = useState("");
+  const [content, setContent] = useState("");
+
+  const { astroObjectId } = match.params;
+
+  const astroObject = useSelector((state) =>
+    state.astroObjects.astroObjects.find(
+      (astroObject) => astroObject.name === astroObjectId
+    )
+  );
+
+  useEffect(() => {
+    if (astroObjectId) {
+      setObjName(astroObject.name);
+      setImageUrl(astroObject.image);
+      setContent(astroObject.description);
+      //console.log(astroObject);
+    }
+  }, []);
+
+  const handleTextAreaChange = (newtextAreaValue) => {
+    //console.log(newtextAreaValue);
+    setContent(newtextAreaValue);
   };
 
-  componentDidMount() {
-    console.log(this.props);
-  }
-
-  handleTextAreaChange = (newtextAreaValue) => {
-    const content = newtextAreaValue;
-    console.log(content);
-    this.setState({ content });
-  };
-  handleObjNameChange = (e) => {
+  const handleObjNameChange = (e) => {
     const objName = e.target.value;
-    this.setState({ objName });
-  };
-  handleSubmit = () => {
-    console.log("content ", this.state.content);
-
-    //const history = useHistory();
-    //useCallback((id) => history.replace("/astro"), [history]);
+    setObjName(objName);
   };
 
-  /*handleAddImageUrl = () => {
-    const images = [...this.state.images, this.state.imageUrl];
-    const imageUrl = "";
-    this.setState({ images });
-    this.setState({ imageUrl });
-    //console.log(images);
-  };*/
+  const handleSubmit = () => {
+    console.log("content ", content);
+  };
 
-  handleImageUrlChange = (e) => {
+  const handleImageUrlChange = (e) => {
     const imageUrl = e.target.value;
-    this.setState({ imageUrl });
-  };
-  handleDeleteImage = (e) => {
-    var images = [...this.state.images]; // make a separate copy of the array
-    var index = images.indexOf(e);
-    if (index !== -1) {
-      images.splice(index, 1);
-      this.setState({ images });
-    }
+    setImageUrl(imageUrl);
   };
 
-  isValidForm = () => {
-    if (
-      typeof this.state.objName === "string" &&
-      this.state.objName !== "" &&
-      typeof this.state.content === "string" &&
-      this.state.content !== "" &&
-      this.isImageUrl(this.state.imageUrl)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  console.log(objName, imageUrl);
 
-  isImageUrl() {
-    const url = this.state.imageUrl;
-    var pattern = new RegExp(
-      "^(https?:\\/\\/)?" + // protocol
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-        "(\\#[-a-z\\d_]*)?$",
-      "i"
-    ); // fragment locator
-    return !!pattern.test(url) && url.match(/\.(jpeg|jpg|gif|png)$/) != null;
-  }
+  return (
+    <div className="section section-examples" data-background-color="black">
+      <div className="space-50" />
+      <Container className="">
+        <form>
+          <FormGroup>
+            <Label for="objName">Object Name</Label>
+            <Input
+              type="text"
+              name="objName"
+              id="objName"
+              value={objName}
+              placeholder="Enter the Object Name"
+              onChange={(e) => handleObjNameChange(e)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="images">Images</Label>
 
-  render() {
-    return (
-      <div className="section section-examples" data-background-color="black">
-        <div className="space-50" />
-        <Container className="">
-          <form>
-            <FormGroup>
-              <Label for="objName">Object Name</Label>
-              <Input
-                type="text"
-                name="objName"
-                id="objName"
-                placeholder="Enter Object Name"
-                onChange={this.handleObjNameChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="images">Images</Label>
+            <Input
+              id="images"
+              type="url"
+              name="images"
+              value={imageUrl}
+              placeholder="Enter image url"
+              onChange={(e) => handleImageUrlChange(e)}
+            />
+          </FormGroup>
 
-              <Input
-                id="images"
-                type="url"
-                name="images"
-                value={this.state.imageUrl}
-                placeholder="Enter image url"
-                onChange={this.handleImageUrlChange}
-              />
-              {/* <Button
-                onClick={this.handleAddImageUrl}
-                className="btn-round btn-icon mb-2"
-                color="primary"
-                disabled={!this.isImageUrl()}
-              >
-                <i className="tim-icons icon-simple-add" />
-              </Button> */}
-            </FormGroup>
-            {/* <Row>
-              {this.state.images.map((img) => (
-                <Col key={img} sm="3">
-                  <img alt="..." className="img-raised" src={img} />
-                  <Button
-                    className="btn-round btn-icon"
-                    size="sm"
-                    color="primary"
-                    onClick={() => this.handleDeleteImage(img)}
-                  >
-                    <i className="tim-icons icon-simple-remove" />
-                  </Button>
-                </Col>
-              ))}
-            </Row> */}
-            <FormGroup>
-              <Label>Description</Label>
-              {/* <TextEditor
-                value={this.state.content}
-                onChange={this.handleTextAreaChange}
-              /> */}
-              <TextEditor />
-              {/* <JoditEditor
-                className="text-dark bg-dark"
-                ref={this.state.editor}
-                config={configJoditEditor}
-                value={this.state.content}
-                tabIndex={2} // tabIndex of textarea
-                onChange={this.handleTextAreaChange}
-              /> */}
-            </FormGroup>
-            <Button
-              tag={Link}
-              to="/lunarCalendar"
-              onClick={this.handleSubmit}
-              color="primary"
-              disabled={!this.isValidForm()}
-            >
-              Submit
-            </Button>
-          </form>
-        </Container>
-      </div>
-    );
+          <FormGroup>
+            <Label>Description</Label>
+
+            <TextEditor
+              value={content}
+              onChange={(e) => handleTextAreaChange(e)}
+            />
+          </FormGroup>
+          <Button
+            tag={Link}
+            to="/"
+            onClick={() => handleSubmit()}
+            color="primary"
+            disabled={!isValidForm(objName, imageUrl, content)}
+          >
+            Submit
+          </Button>
+        </form>
+      </Container>
+    </div>
+  );
+}
+
+function isValidForm(objName, imageUrl, content) {
+  if (
+    typeof objName === "string" &&
+    objName !== "" &&
+    typeof content === "string" &&
+    content !== "" &&
+    isImageUrl(imageUrl)
+  ) {
+    return true;
+  } else {
+    return false;
   }
 }
 
-export default AddNewAstroObj;
+function isImageUrl(url) {
+  var pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return !!pattern.test(url) && url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+}
