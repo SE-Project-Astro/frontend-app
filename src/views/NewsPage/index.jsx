@@ -7,6 +7,8 @@ import nasa_news_2 from "../../assets/img/News/nasa_news_2.jpg";
 import spacex_news_1 from "../../assets/img/News/spacex_news_1.webp";
 import blueorigin_news_1 from "../../assets/img/News/blueorigin_news_1.jpg";
 
+import { timeDifference } from "../../helper/helper";
+
 import { useHistory } from "react-router";
 
 import { selectAllNews, fetchNews } from "redux/slices/newsSlice";
@@ -45,7 +47,7 @@ const NewsPage = () => {
                   height="550px"
                   cardTitle={newsList[0].title}
                   cardText={newsList[0].cardText}
-                  lastUpdatedText={newsList[0].timestamp}
+                  lastUpdatedText={timeDifference(newsList[0].timestamp)}
                 />
               </Col>
               <Col xs="12" xl="4">
@@ -58,7 +60,7 @@ const NewsPage = () => {
                     image={newsList[1].image}
                     cardTitle={newsList[1].title}
                     cardText={newsList[1].cardText}
-                    lastUpdatedText={newsList[1].timestamp}
+                    lastUpdatedText={timeDifference(newsList[1].timestamp)}
                   />
                 </Col>
                 <Col
@@ -70,7 +72,7 @@ const NewsPage = () => {
                     image={newsList[2].image}
                     cardTitle={newsList[2].title}
                     cardText={newsList[2].cardText}
-                    lastUpdatedText={newsList[2].timestamp}
+                    lastUpdatedText={timeDifference(newsList[2].timestamp)}
                   />
                 </Col>
               </Col>
@@ -82,7 +84,7 @@ const NewsPage = () => {
                     image={e.image}
                     cardTitle={e.title}
                     cardText={e.cardText}
-                    lastUpdatedText={e.timestamp}
+                    lastUpdatedText={timeDifference(e.timestamp)}
                   />
                 </Col>
               ))}

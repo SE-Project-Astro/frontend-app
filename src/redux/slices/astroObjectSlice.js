@@ -48,6 +48,7 @@ const fetchAstroObjects = () => {
             dispatch(astroObjectSlice.actions.setResultStatus(false))
         }
 
+
     }
 };
 const addNewAstroObject = (name, image, cardText, content) => {
@@ -85,6 +86,7 @@ export const {astroObjectAdded, astroObjectUpdated} = astroObjectSlice.actions;
 export default astroObjectSlice.reducer;
 
 export {fetchAstroObjects, addNewAstroObject, updateAstroObject}
+
 
 export const selectAllAstroObjects = (state) => state.astroObjects.astroObjects;
 

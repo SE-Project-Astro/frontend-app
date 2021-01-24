@@ -9,6 +9,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import { timeDifference } from "../../../helper/helper";
 import CardWithImage from "components/CardWithImage";
 import { useSelector } from "react-redux";
 
@@ -38,8 +39,10 @@ const News = ({ match }) => {
                 image={news.image}
                 headingType="h2"
                 height="520px"
-                cardTitle={""}
+                cardTitle=""
+                cardText=""
                 isInList={false}
+                lastUpdatedText={timeDifference(news.timestamp)}
               />
             </Row>
             <div style={({ backgroundColor: "white" }, { color: "white" })}>
