@@ -2,34 +2,37 @@ import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TextEditor from "../../components/TextEditor/TextEditor";
 //import TextEditor from "../../components/TextEditor/RichTextEditor";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 // reactstrap components
 import { FormGroup, Label, Input, Button, Container } from "reactstrap";
+import {addNewAstroObject} from "../../redux/slices/astroObjectSlice";
 
 export default function AddNewAstroObj({ match }) {
   /**/
-
+  const dispatch = useDispatch()
   const [imageUrl, setImageUrl] = useState("");
   const [objName, setObjName] = useState("");
   const [content, setContent] = useState("");
 
   const { astroObjectId } = match.params;
+
   const astroObject = useSelector((state) =>
-      state.astroObjects.find((astroObject) => astroObject.id === astroObjectId)
+      state.astroObjects.astroObjects.find(
+          (astroObject) => astroObject.name === astroObjectId
+      )
   );
 
   useEffect(() => {
     if (astroObjectId) {
-      setObjName(astroObject.cardTitle);
+      setObjName(astroObject.name);
       setImageUrl(astroObject.image);
-      setContent("something");
-      //console.log(astroObject);
+      setContent(astroObject.description);
+      console.log(astroObject);
     }
   }, []);
 
   const handleTextAreaChange = (newtextAreaValue) => {
-    console.log(newtextAreaValue);
     setContent(newtextAreaValue);
   };
 
@@ -38,8 +41,8 @@ export default function AddNewAstroObj({ match }) {
     setObjName(objName);
   };
 
-  const handleSubmit = () => {
-    console.log("content ", content);
+  const handleSubmit = (event) => {
+    dispatch(addNewAstroObject(objName, imageUrl, "", content));
   };
 
   const handleImageUrlChange = (e) => {
@@ -86,8 +89,8 @@ export default function AddNewAstroObj({ match }) {
             </FormGroup>
             <Button
                 tag={Link}
-                to="/"
-                onClick={() => handleSubmit()}
+                to="/astro"
+                onClick={event => handleSubmit(event)}
                 color="primary"
                 disabled={!isValidForm(objName, imageUrl, content)}
             >

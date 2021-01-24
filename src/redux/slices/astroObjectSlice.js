@@ -45,7 +45,7 @@ const fetchAstroObjects =  () => {
     {
         try {
             dispatch(astroObjectSlice.actions.setLoadingStatus())
-            const response = await axios.get('/api/getAstrList?count=5&tbName=astronomical_object')
+            const response = await axios.get('/api/getAstrList?count=100&tbName=astronomical_object')
             dispatch(astroObjectAdded(response.data))
             dispatch(astroObjectSlice.actions.setResultStatus(true))
         }
@@ -55,13 +55,18 @@ const fetchAstroObjects =  () => {
     }
 }
 
-const addNewAstroObject = () => {
+const addNewAstroObject = (name, image, cardText, content ) => {
     return async (dispatch, getState) => {
         try {
-            
+            dispatch(astroObjectSlice.actions.setLoadingStatus());
+            const response = await axios.post(`/api/AddAstrObj?tag=${name}&image=${image}&desc=${content}` )
+            dispatch(astroObjectSlice.actions.setResultStatus(true))
+            dispatch(fetchAstroObjects())
+            return response.data;
         }
         catch (e) {
-            
+            dispatch(astroObjectSlice.actions.setResultStatus(false))
+            return e.message;
         }
     }
 }
@@ -70,7 +75,7 @@ export const { astroObjectAdded, astroObjectUpdated } = astroObjectSlice.actions
 
 export default astroObjectSlice.reducer;
 
-export {fetchAstroObjects}
+export {fetchAstroObjects, addNewAstroObject}
 
 export const selectAllAstroObjects = state => state.astroObjects.astroObjects;
 
