@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST_URL = "http://localhost:8080";
+const HOST_URL = "https://morning-beach-31264.herokuapp.com";
 axios.defaults.baseURL = HOST_URL;
 
 export const setAuthToken = token => {
