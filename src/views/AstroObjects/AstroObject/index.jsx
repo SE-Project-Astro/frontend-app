@@ -1,16 +1,12 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { useHistory } from "react-router";
 import {
   Row,
-  Col,
   Container,
-  FormGroup,
-  Label,
-  Input,
   Button,
 } from "reactstrap";
 import CardWithImage from "components/CardWithImage";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import { timeDifference } from "../../../helper/helper";
 
 const AstroObject = ({ match }) => {
