@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="727fda60-7253-4c76-a55a-e412af7370e4" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/blk-design-system-react.scss" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbars/NormalNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/examples/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/LoginPage.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layout/Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Aux.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/AstroObject/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AstroObjects/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewsPage/News/index.jsx" afterDir="false" />
+>>>>>>> 4a093158109f8691018098a3a21a355a774ae254
+>>>>>>> bfd2ea0d233469de8b3fe042d612378ec0dc2659
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GuideAstro" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -32,6 +46,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -39,6 +54,16 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TemplateIndex.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/views/TemplateIndex.js" working-dir="$PROJECT_DIR$/src/views">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.TemplateIndex.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -50,6 +75,16 @@
       <updated>1610594068039</updated>
       <workItem from="1610594070184" duration="3644000" />
       <workItem from="1610580418063" duration="654000" />
+      <workItem from="1610616732983" duration="2541000" />
+      <workItem from="1610766882498" duration="52375000" />
+      <workItem from="1610892936946" duration="1722000" />
+      <workItem from="1610930851960" duration="644000" />
+      <workItem from="1611215839354" duration="17000" />
+      <workItem from="1611226903819" duration="647000" />
+      <workItem from="1611234947585" duration="2473000" />
+      <workItem from="1611240902357" duration="3178000" />
+      <workItem from="1611274497483" duration="11795000" />
+      <workItem from="1611293313800" duration="38394000" />
     </task>
     <servers />
   </component>
